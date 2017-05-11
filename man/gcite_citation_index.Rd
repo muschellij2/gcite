@@ -5,7 +5,6 @@
 \alias{gcite_citation_index.xml_node}
 \alias{gcite_citation_index.xml_document}
 \alias{gcite_citation_index.character}
-\alias{gcite_citation_index.default}
 \title{Parse Google Citation Index}
 \usage{
 gcite_citation_index(doc, ...)
@@ -15,8 +14,6 @@ gcite_citation_index(doc, ...)
 \method{gcite_citation_index}{xml_document}(doc, ...)
 
 \method{gcite_citation_index}{character}(doc, ...)
-
-\method{gcite_citation_index}{default}(doc, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}

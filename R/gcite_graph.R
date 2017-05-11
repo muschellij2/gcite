@@ -15,14 +15,24 @@ gcite_graph <- function(citations, ...){
 #' @export
 gcite_graph.xml_node = function(citations, ...) {
   citations = xml2::as_list(citations)
-  gcite_graph.default(citations, ...)
+  gcite_graph(citations, ...)
 }
 
 #' @rdname gcite_graph
 #' @export
-gcite_graph.list = function(citations, ...) {
-  gcite_graph.default(citations, ...)
+gcite_graph.xml_document = function(citations, ...) {
+  citations = rvest::html_node(citations, css = "#gsc_graph_bars")
+  gcite_graph(citations, ...)
 }
+
+#' @rdname gcite_graph
+#' @export
+gcite_graph.character = function(citations, ...) {
+  res = httr::GET(url = citations)
+  citations = httr::content(res)
+  gcite_graph(citations, ...)
+}
+
 
 #' @rdname gcite_graph
 #' @export

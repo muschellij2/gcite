@@ -22,13 +22,14 @@ gcite_citation_index <- function(doc, ...){
 #' @rdname gcite_citation_index
 #' @export
 gcite_citation_index.xml_node = function(doc, ...) {
-  full_cite_tabs = rvest::html_table(doc)
+  rvest::html_table(doc)
 }
 
 #' @rdname gcite_citation_index
 #' @export
 gcite_citation_index.xml_document = function(doc, ...) {
-  gcite_citation_index.default(doc, ...)
+  doc = rvest::html_nodes(doc, "#gsc_rsb_st")[[1]]
+  gcite_citation_index(doc, ...)
 }
 
 #' @rdname gcite_citation_index
@@ -36,13 +37,7 @@ gcite_citation_index.xml_document = function(doc, ...) {
 gcite_citation_index.character = function(doc, ...) {
   res = httr::GET(url = doc)
   doc = httr::content(res)
-  gcite_citation_index.default(doc, ...)
+  gcite_citation_index(doc, ...)
 }
 
-#' @rdname gcite_citation_index
-#' @export
-gcite_citation_index.default = function(doc, ...) {
-  full_cite_tabs = rvest::html_nodes(doc, "#gsc_rsb_st")[[1]]
-  full_cite_tabs = rvest::html_table(full_cite_tabs)
-  return(full_cite_tabs)
-}
+
