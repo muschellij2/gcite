@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' df = gcite_user_info(user = "T9eqZgMAAAAJ")
-gcite_author_info = function(user, pagesize = 100, verbose = TRUE, ...) {
+gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
   url = paste0("https://scholar.google.com/citations?user=", user)
   
   #############################################
@@ -60,31 +60,8 @@ gcite_author_info = function(user, pagesize = 100, verbose = TRUE, ...) {
   L = list(citation_indices = cite_ind,
            overall_citations = overall_cite,
            all_papers = all_papers,
-           df = paper_df
+           paper_df = paper_df
            )
   return(L)
 }
 
-
-#' @title Getting User Information from name
-#' @description Calls \code{\link{gcite_user_info}} after getting the user
-#' identifier
-#' @param author author name separated by spaces
-#' @param verbose Verbose diagnostic printing
-#' @param ask If multiple authors are found, should a menu be given
-#' @param ... arguments passed to \code{\link{gcite_user_info}}
-#'
-#' @return A list of citations, citation indices, and a 
-#' \code{data.frame} of authors, journal, and citations, and a 
-#' \code{data.frame} of the links to all paper URLs.
-#' @export
-#'
-#' @examples
-#' df = gcite_author_info(author = "John Muschelli")
-gcite_author_info = function(author, 
-                           verbose = TRUE, 
-                           ask = TRUE, ...) {
-  user = gcite_username(author = author, verbose = verbose, ask = ask)
-  
-  return(gcite_author_info(user = user, ...))
-}
