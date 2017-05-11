@@ -1,0 +1,16 @@
+Package: gcite
+Type: Package
+Title: Google Citation
+Version: 0.1
+Date: 2017-05-11
+Author: John Muschelli
+Maintainer: John Muschelli <muschellij2@gmail.com>
+Description: Scrapes Google citation pages and creates word clouds.
+License: GPL
+LazyData: true
+LazyLoad: yes
+Imports:
+    xml2,
+    httr,
+    rvest
+RoxygenNote: 6.0.1
