@@ -1,11 +1,12 @@
 Package: gcite
 Type: Package
-Title: Google Citation
+Title: Google Citation Parser
 Version: 0.4
 Date: 2017-05-11
 Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: Scrapes Google Citation pages and creates word clouds.
+Description: Scrapes Google Citation pages and creates data frames of 
+    citations over time.
 License: GPL
 LazyData: true
 LazyLoad: yes
