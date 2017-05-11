@@ -43,6 +43,7 @@ gcite_cite_over_time.xml_document = function(doc, ...) {
 #' @export
 gcite_cite_over_time.character = function(doc, ...) {
   res = httr::GET(url = doc)
+  stop_for_status(res)
   doc = httr::content(res)
   gcite_cite_over_time(doc, ...)
 }

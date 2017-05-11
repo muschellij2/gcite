@@ -7,6 +7,7 @@
 #' @return A matrix of indices
 #' @export
 #' @importFrom rvest html_table html_nodes
+#' @importFrom httr stop_for_status
 #' @importFrom stats reshape
 #' @examples 
 #' library(httr)
@@ -43,6 +44,7 @@ gcite_citation_page.xml_document = function(doc, ...) {
 #' @export
 gcite_citation_page.character = function(doc, ...) {
   res = httr::GET(url = doc)
+  stop_for_status(res)
   doc = httr::content(res)
   gcite_citation_page(doc, ...)
 }

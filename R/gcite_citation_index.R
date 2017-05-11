@@ -10,6 +10,7 @@
 #' @examples 
 #' library(httr)
 #' library(rvest) 
+#' library(gcite)
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
 #' url = gcite_url(url = url, pagesize = 10, cstart = 0) 
 #' ind = gcite_citation_index(url)
@@ -38,6 +39,7 @@ gcite_citation_index.xml_document = function(doc, ...) {
 #' @export
 gcite_citation_index.character = function(doc, ...) {
   res = httr::GET(url = doc)
+  stop_for_status(res)
   doc = httr::content(res)
   gcite_citation_index(doc, ...)
 }

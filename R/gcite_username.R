@@ -27,6 +27,7 @@ gcite_username <- function(author,
   )
   
   res = httr::GET(url = url)
+  stop_for_status(res)
   doc = httr::content(res)
   
   

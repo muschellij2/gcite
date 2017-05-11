@@ -40,6 +40,7 @@ gcite_papers.xml_document = function(doc, ...) {
 #' @export
 gcite_papers.character = function(doc, ...) {
   res = httr::GET(url = doc)
+  stop_for_status(res)
   doc = httr::content(res)
   gcite_papers(doc, ...)
 }

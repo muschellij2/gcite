@@ -27,6 +27,7 @@ gcite_main_graph.xml_document = function(citations, ...) {
 #' @export
 gcite_main_graph.character = function(citations, ...) {
   res = httr::GET(url = citations)
+  stop_for_status(res)
   citations = httr::content(res)
   gcite_main_graph(citations, ...)
 }
