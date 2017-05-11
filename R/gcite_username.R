@@ -79,14 +79,16 @@ gcite_username <- function(author,
       }
     } else {
       warning("Multiple authors found, first chosen")
-      message(dat)
+      print(dat)
       choice = 1
     }
+  } else {
+    choice = 1
   }
   dat$fullnames = NULL
   dat = dat[choice, ]
   if (verbose) {
-    message(dat)
+    print(dat)
   }
   return(dat$username)
 }
