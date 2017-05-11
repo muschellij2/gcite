@@ -13,12 +13,16 @@ gcite_main_graph <- function(citations, ...){
 
 #' @rdname gcite_main_graph
 #' @export
+gcite_main_graph.xml_node = function(citations, ...) {
+  citations = xml2::as_list(citations)
+  gcite_main_graph(citations, ...)
+}
+
+#' @rdname gcite_main_graph
+#' @export
 gcite_main_graph.xml_document = function(citations, ...) {
-  citations = html_node(citations, css = "#gsc_g") 
-  citations = as_list(citations)
-  citations = unlist(citations, recursive = FALSE)
-  names(citations) = gsub("^div[.]", "", names(citations))
-  gcite_main_graph.default(citations, ...)
+  citations = rvest::html_node(citations, css = "#gsc_graph_bars")
+  gcite_main_graph(citations, ...)
 }
 
 #' @rdname gcite_main_graph

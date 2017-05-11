@@ -39,14 +39,34 @@ gcite_graph.character = function(citations, ...) {
 #' @export
 gcite_graph.default = function(citations, ...) {
   cn = names(citations) 
-  spans = cn %in% "span"
+  # spans = cn %in% "span"
   a_s = cn %in% "a"
-  years = unlist(citations[spans])
-  cites = unlist(citations[a_s])
-  years = as.numeric(years)
-  cites = as.numeric(cites)
-  if (length(cites) != length(years)) {
-    warning("Getting yearly citations may not work correctly")
-  }
-  cites = cbind(year = years, n_citations = cites)
+  # years = unlist(citations[spans])
+  info = lapply(citations[a_s], function(x) {
+    cc = x$span[[1]]
+    if (is.null(cc)) {
+      cc = 0
+    }
+    cc = as.numeric(cc)
+    href = attributes(x)$href
+    y = parse_url(href)$query[c("as_ylo", "as_yhi")]
+    y = unlist(unique(y))
+    if (length(y) == 0) {
+      y = NA
+    }
+    y = as.numeric(y)
+    data.frame(year = y, n_citations = cc,stringsAsFactors = FALSE)
+  })
+  info = as.data.frame(data.table::rbindlist(info, fill = TRUE))
+  
+  # 
+  # cites = unlist(citations[a_s])
+  # years = as.numeric(years)
+  # cites = as.numeric(cites)
+  # if (length(cites) != length(years)) {
+  #   warning("Getting yearly citations may not work correctly")
+  # }
+  # cites = cbind(year = years, n_citations = cites)
+  info
 }
+

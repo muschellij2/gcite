@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^appveyor\.yml$
+
+R/gcite_main_graph_old\.R

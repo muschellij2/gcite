@@ -4,6 +4,7 @@
 \alias{gcite_main_graph}
 \alias{gcite_main_graph.xml_document}
 \alias{gcite_main_graph.character}
+\alias{gcite_main_graph.default}
 \title{Parse Google Citation Graph}
 \usage{
 gcite_main_graph(citations, ...)
@@ -11,6 +12,8 @@ gcite_main_graph(citations, ...)
 \method{gcite_main_graph}{xml_document}(citations, ...)
 
 \method{gcite_main_graph}{character}(citations, ...)
+
+\method{gcite_main_graph}{default}(citations, ...)
 }
 \arguments{
 \item{citations}{A list of nodes or xml_node}
