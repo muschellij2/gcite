@@ -33,6 +33,8 @@ A matrix of indices
 Parses a google citation indices (h-index, etc.) from main page
 }
 \examples{
+library(httr)
+library(rvest)
 url = paste0("https://scholar.google.com/citations?view_op=view_citation&", 
 "hl=en&oe=ASCII&user=T9eqZgMAAAAJ&pagesize=100&", 
 "citation_for_view=T9eqZgMAAAAJ:W7OEmFMy1HYC")

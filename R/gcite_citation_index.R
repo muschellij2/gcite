@@ -8,6 +8,8 @@
 #' @export
 #' @importFrom rvest html_table html_nodes
 #' @examples 
+#' library(httr)
+#' library(rvest) 
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
 #' url = gcite_url(url = url, pagesize = 10, cstart = 0) 
 #' ind = gcite_citation_index(url)

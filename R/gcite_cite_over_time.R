@@ -11,6 +11,8 @@
 #' @importFrom rvest html_node
 #' @importFrom httr GET content
 #' @examples 
+#' library(httr)
+#' library(rvest) 
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
 #' url = gcite_url(url = url, pagesize = 10, cstart = 0) 
 #' ind = gcite_cite_over_time(url)

@@ -1,4 +1,0 @@
-load("/Users/johnmuschelli/Dropbox/Packages/googleCite/data/hexdata.rda")
-ls()
-hexdata
-q('no')

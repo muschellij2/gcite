@@ -7,7 +7,10 @@
 #' @return A matrix of indices
 #' @export
 #' @importFrom rvest html_table html_nodes
+#' @importFrom stats reshape
 #' @examples 
+#' library(httr)
+#' library(rvest)
 #' url = paste0("https://scholar.google.com/citations?view_op=view_citation&", 
 #' "hl=en&oe=ASCII&user=T9eqZgMAAAAJ&pagesize=100&", 
 #' "citation_for_view=T9eqZgMAAAAJ:W7OEmFMy1HYC")

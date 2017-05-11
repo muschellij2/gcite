@@ -12,5 +12,6 @@ LazyLoad: yes
 Imports:
     xml2,
     httr,
-    rvest
+    rvest,
+    stats
 RoxygenNote: 6.0.1
