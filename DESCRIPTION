@@ -13,5 +13,7 @@ Imports:
     xml2,
     httr,
     rvest,
-    stats
+    stats,
+    pbapply,
+    data.table
 RoxygenNote: 6.0.1

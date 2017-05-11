@@ -47,5 +47,5 @@ gcite_graph.default = function(citations, ...) {
   if (length(cites) != length(years)) {
     warning("Getting yearly citations may not work correctly")
   }
-  cites = cbind(years, cites)
+  cites = cbind(year = years, n_citations = cites)
 }

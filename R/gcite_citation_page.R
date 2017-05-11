@@ -57,19 +57,41 @@ gcite_citation_page.list = function(doc, ...) {
 #' @export
 gcite_citation_page.default = function(doc, ...) {
   
-  fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
-  fields = html_text(fields)
+    fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
+    fields = html_text(fields)
+    
+    vals = html_nodes(doc, xpath = '//div[@class = "gsc_value"]')
+    vals = html_text(vals)
+    df = data.frame(field = fields, value = vals, stringsAsFactors = FALSE)
+    df$field = tolower(df$field)
+    df = df[ df$field %in% 
+               c("authors", "publication date", "journal", "volume", "issue", 
+                 "pages", "publisher", "description"),]
+    
+    
+    
+    
+    df$id = 1
+    wide = reshape(df, direction = "wide", idvar = "id", timevar = "field")
+    colnames(wide) = gsub("^value[.]", "", colnames(wide))
+    wide$id = NULL
+    
+    citations = rvest::html_node(doc, css = "#gsc_graph_bars")
+    citations = citations[!is.na(citations)]
+    if ( length(citations) > 0) {
+      citations = citations[[1]]
+      citations = gcite_graph(citations)    
+      if ( nrow(citations) > 0) {
+        citations = data.frame(citations)
+        citations$id = 1
+        citations = reshape(citations, direction = "wide", 
+                            idvar = "id", timevar = "year")
+        colnames(citations) = gsub("^n_citations[.]", "", colnames(citations))
+        citations$id = NULL
+        wide = cbind(wide, citations)
+      }
+    }
+    
+    return(wide)
+  }
   
-  vals = html_nodes(doc, xpath = '//div[@class = "gsc_value"]')
-  vals = html_text(vals)
-  df = data.frame(field = fields, value = vals, stringsAsFactors = FALSE)
-  df$field = tolower(df$field)
-  df = df[ df$field %in% 
-             c("authors", "publication date", "journal", "volume", "issue", 
-               "pages", "publisher", "description"),]
-  df$id = 1
-  wide = reshape(df, direction = "wide", idvar = "id", timevar = "field")
-  colnames(wide) = gsub("^value[.]", "", colnames(wide))
-  wide$id = NULL
-  return(wide)
-}
