@@ -16,7 +16,7 @@
 #' ind = gcite_cite_over_time(url)
 #' doc = content(httr::GET(url))
 #' ind = gcite_cite_over_time(doc)
-#' ind_nodes = rvest::html_nodes(doc, "#gsc_rsb_st")[[1]]
+#' ind_nodes = rvest::html_nodes(doc, "#gsc_g")[[1]]
 #' ind = gcite_cite_over_time(ind_nodes)
 gcite_cite_over_time <- function(doc, ...){
   UseMethod("gcite_cite_over_time")
