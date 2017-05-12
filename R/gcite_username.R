@@ -4,6 +4,7 @@
 #' @param author author name separated by spaces
 #' @param verbose Verbose diagnostic printing
 #' @param ask If multiple authors are found, should a menu be given
+#' @param secure use https vs. http
 #' 
 #' @return A character vector of the username of the author
 #' @examples
@@ -15,13 +16,14 @@
 #' @importFrom utils menu
 gcite_username <- function(author,
                            verbose = TRUE,
-                           ask = TRUE) {
+                           ask = TRUE,
+                           secure = TRUE) {
   auth.names <- strsplit(author, " ")[[1]]
   auth.names <- paste(auth.names[1:length(auth.names)],
                       sep = "", collapse = "+")
   ### search the page
   url <- paste0(
-    "https://scholar.google.com/",
+    "http", ifelse(secure, "s", ""), "://scholar.google.com/",
     "citations?hl=en&view_op=search_authors&mauthors=",
     auth.names
   )

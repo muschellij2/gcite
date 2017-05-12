@@ -4,7 +4,7 @@
 \alias{gcite_author_info}
 \title{Getting User Information from name}
 \usage{
-gcite_author_info(author, verbose = TRUE, ask = TRUE, ...)
+gcite_author_info(author, verbose = TRUE, ask = TRUE, secure = TRUE, ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -12,6 +12,8 @@ gcite_author_info(author, verbose = TRUE, ask = TRUE, ...)
 \item{verbose}{Verbose diagnostic printing}
 
 \item{ask}{If multiple authors are found, should a menu be given}
+
+\item{secure}{use https vs. http}
 
 \item{...}{arguments passed to \code{\link{gcite_user_info}}}
 }
@@ -25,5 +27,5 @@ Calls \code{\link{gcite_user_info}} after getting the user
 identifier
 }
 \examples{
-df = gcite_author_info(author = "John Muschelli")
+df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 }

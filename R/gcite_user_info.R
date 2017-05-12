@@ -3,6 +3,8 @@
 #' @param user user ID for google Citations
 #' @param pagesize Size of pages, max 100, passed to \code{\link{gcite_url}}
 #' @param verbose Print diagnostic messages
+#' @param secure use https vs. http
+#' 
 #' @param ... Not used
 #'
 #' @return A list of citations, citation indices, and a 
@@ -15,8 +17,13 @@
 #' \dontrun{
 #' df = gcite_user_info(user = "T9eqZgMAAAAJ")
 #' }
-gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
-  url = paste0("https://scholar.google.com/citations?user=", user)
+gcite_user_info = function(
+  user, pagesize = 100, 
+  verbose = TRUE, 
+  secure = TRUE,
+  ...) {
+  url = paste0("http", ifelse(secure, "s", ""), 
+               "://scholar.google.com/citations?user=", user)
   
   #############################################
   # Getting initial URL
@@ -76,7 +83,7 @@ gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
            all_papers = all_papers,
            paper_df = paper_df,
            user = user
-           )
+  )
   return(L)
 }
 

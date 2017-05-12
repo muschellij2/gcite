@@ -4,7 +4,7 @@
 \alias{gcite_username}
 \title{Google Citation Username Seracher}
 \usage{
-gcite_username(author, verbose = TRUE, ask = TRUE)
+gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -12,6 +12,8 @@ gcite_username(author, verbose = TRUE, ask = TRUE)
 \item{verbose}{Verbose diagnostic printing}
 
 \item{ask}{If multiple authors are found, should a menu be given}
+
+\item{secure}{use https vs. http}
 }
 \value{
 A character vector of the username of the author
