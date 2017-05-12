@@ -9,20 +9,22 @@
 \alias{gcite_citation_page.default}
 \title{Parse Google Citation Index}
 \usage{
-gcite_citation_page(doc, ...)
+gcite_citation_page(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{xml_nodeset}(doc, ...)
+\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{xml_document}(doc, ...)
+\method{gcite_citation_page}{xml_document}(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{character}(doc, ...)
+\method{gcite_citation_page}{character}(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{list}(doc, ...)
+\method{gcite_citation_page}{list}(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{default}(doc, ...)
+\method{gcite_citation_page}{default}(doc, title = NULL, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
+
+\item{title}{title of the article}
 
 \item{...}{not currently used}
 }
@@ -33,6 +35,7 @@ A matrix of indices
 Parses a google citation indices (h-index, etc.) from main page
 }
 \examples{
+\dontrun{
 library(httr)
 library(rvest)
 url = paste0("https://scholar.google.com/citations?view_op=view_citation&", 
@@ -45,4 +48,5 @@ ind = gcite_citation_page(doc)
 ind_nodes = html_nodes(doc, "#gsc_table div")
 ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')  
 ind = gcite_citation_page(ind_nodes)
+}
 }

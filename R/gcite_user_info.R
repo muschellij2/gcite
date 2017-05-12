@@ -11,7 +11,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' df = gcite_user_info(user = "T9eqZgMAAAAJ")
+#' }
 gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
   url = paste0("https://scholar.google.com/citations?user=", user)
   
@@ -53,10 +55,21 @@ gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
     cstart = pagesize + cstart
   }
   
+  if (verbose) {
+    message("Reading citation pages")
+  }  
   urls = all_papers$title_link
   paper_info = pbapply::pblapply(urls, gcite_citation_page)
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
+  cn = colnames(paper_df)
+  suppressWarnings({
+    num_cn = as.numeric(cn)
+  })
+  cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
+  paper_df = paper_df[, cn]
+  
+  # paper_df$title =
   L = list(citation_indices = cite_ind,
            overall_citations = overall_cite,
            all_papers = all_papers,

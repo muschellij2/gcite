@@ -16,5 +16,8 @@ Imports:
     rvest,
     stats,
     pbapply,
-    data.table
+    data.table,
+    wordcloud,
+    tm,
+    graphics
 RoxygenNote: 6.0.1

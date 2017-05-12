@@ -24,5 +24,7 @@ A list of citations, citation indices, and a
 Loops through pages for all information on Google Citations
 }
 \examples{
+\dontrun{
 df = gcite_user_info(user = "T9eqZgMAAAAJ")
+}
 }
