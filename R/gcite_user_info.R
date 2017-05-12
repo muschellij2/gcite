@@ -7,7 +7,8 @@
 #'
 #' @return A list of citations, citation indices, and a 
 #' \code{data.frame} of authors, journal, and citations, and a 
-#' \code{data.frame} of the links to all paper URLs.
+#' \code{data.frame} of the links to all paper URLs and the character
+#' string of the user name.
 #' @export
 #'
 #' @examples
@@ -73,7 +74,8 @@ gcite_user_info = function(user, pagesize = 100, verbose = TRUE, ...) {
   L = list(citation_indices = cite_ind,
            overall_citations = overall_cite,
            all_papers = all_papers,
-           paper_df = paper_df
+           paper_df = paper_df,
+           user = user
            )
   return(L)
 }
