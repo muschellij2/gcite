@@ -11,6 +11,7 @@
 #' @importFrom rvest html_node
 #' @importFrom httr GET content
 #' @examples 
+#' \dontrun{
 #' library(httr)
 #' library(rvest) 
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
@@ -20,6 +21,7 @@
 #' ind = gcite_cite_over_time(doc)
 #' ind_nodes = rvest::html_nodes(doc, "#gsc_g")[[1]]
 #' ind = gcite_cite_over_time(ind_nodes)
+#' }
 gcite_cite_over_time <- function(doc, ...){
   UseMethod("gcite_cite_over_time")
 }
