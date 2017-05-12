@@ -7,7 +7,8 @@
 #' @return A matrix of indices
 #' @export
 #' @importFrom rvest html_table html_nodes
-#' @examples 
+#' @examples
+#' \dontrun{ 
 #' library(httr)
 #' library(rvest) 
 #' library(gcite)
@@ -18,6 +19,7 @@
 #' ind = gcite_citation_index(doc)
 #' ind_nodes = rvest::html_nodes(doc, "#gsc_rsb_st")[[1]]
 #' ind = gcite_citation_index(ind_nodes)
+#' }
 gcite_citation_index <- function(doc, ...){
   UseMethod("gcite_citation_index")
 }
