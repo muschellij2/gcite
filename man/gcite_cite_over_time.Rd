@@ -31,6 +31,7 @@ Parses a google citations over time from the main
 Citation page
 }
 \examples{
+\dontrun{
 library(httr)
 library(rvest) 
 url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
@@ -40,4 +41,5 @@ doc = content(httr::GET(url))
 ind = gcite_cite_over_time(doc)
 ind_nodes = rvest::html_nodes(doc, "#gsc_g")[[1]]
 ind = gcite_cite_over_time(ind_nodes)
+}
 }
