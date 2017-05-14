@@ -9,6 +9,7 @@
 #' @importFrom rvest html_table html_nodes
 #' @importFrom stats reshape
 #' @examples 
+#' \dontrun{
 #' library(httr)
 #' library(rvest) 
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
@@ -18,6 +19,7 @@
 #' ind = gcite_papers(doc)
 #' ind_nodes = rvest::html_nodes(doc, "#gsc_a_b")
 #' ind = gcite_papers(ind_nodes)
+#' }
 gcite_papers <- function(doc, ...){
   UseMethod("gcite_papers")
 }

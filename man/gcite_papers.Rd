@@ -30,6 +30,7 @@ A matrix of indices
 Parses a google citation indices (h-index, etc.) from main page
 }
 \examples{
+\dontrun{
 library(httr)
 library(rvest) 
 url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
@@ -39,4 +40,5 @@ doc = content(httr::GET(url))
 ind = gcite_papers(doc)
 ind_nodes = rvest::html_nodes(doc, "#gsc_a_b")
 ind = gcite_papers(ind_nodes)
+}
 }
