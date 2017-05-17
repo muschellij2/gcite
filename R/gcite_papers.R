@@ -90,7 +90,7 @@ gcite_papers.default = function(doc, ...) {
     cn[ cn == "value.gsc_a_ac gsc_a_acm"] = "n_citations"
     
     colnames(a) = cn
-    print(cn)
+    # print(cn)
     a$id = NULL
     get_cols = c("title", "title_link", "n_citations", "n_citations_link")
     not_there = setdiff(get_cols, colnames(a))
