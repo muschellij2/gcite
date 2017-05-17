@@ -66,7 +66,7 @@ gcite_papers.default = function(doc, ...) {
   fake_a_df = data.frame(title = NA, 
                          title_link = NA, n_citations = NA,
                          n_citations_link = NA)
-  all_a = lapply(tab, function(x) {
+  get_data = function(x) {
     # print(x)
     nx = names(x)
     a = nx == "a"
@@ -85,12 +85,28 @@ gcite_papers.default = function(doc, ...) {
     cn[ cn == "value.gsc_a_ac"] = "n_citations"
     cn[ cn == "href.gsc_a_at"] = "title_link"
     cn[ cn == "href.gsc_a_ac"] = "n_citations_link"
+    # Bug fix https://github.com/muschellij2/gcite/issues/1
+    cn[ cn == "href.gsc_a_ac gsc_a_acm"] = "n_citations_link"
+    cn[ cn == "value.gsc_a_ac gsc_a_acm"] = "n_citations"
+    
     colnames(a) = cn
+    print(cn)
     a$id = NULL
+    get_cols = c("title", "title_link", "n_citations", "n_citations_link")
+    not_there = setdiff(get_cols, colnames(a))
+    if (length(not_there) > 0) {
+      warning(paste0("There is an odd error here with parsing an ", 
+                     "individual page, please submit bug to ",
+                     "https://github.com/muschellij2/gcite/issues"))
+      for (i in not_there) {
+        a[, i] = NA
+      }
+    }
     a = a[, c("title", "title_link", "n_citations", "n_citations_link")]
     
     a
-  })
+  }
+  all_a = lapply(tab, get_data)
   all_a = do.call("rbind", all_a)
   rownames(all_a) = NULL
   
