@@ -15,3 +15,7 @@ before_install:
     
 after_success:
   - Rscript -e 'covr::coveralls()'
+
+deploy:
+  on:
+    r: release
