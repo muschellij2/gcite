@@ -7,7 +7,7 @@
 #' @examples
 #' is_travis()
 is_travis = function(){
-  users = system("users", intern = TRUE)
+  users = Sys.getenv("USER")
   users = trimws(users)
   any(grepl("travis", users))
 }
