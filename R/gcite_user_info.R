@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' if (!is_travis()) {
+#' \dontrun{
 #' df = gcite_user_info(user = "T9eqZgMAAAAJ")
 #' }
 gcite_user_info = function(
