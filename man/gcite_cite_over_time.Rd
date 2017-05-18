@@ -31,7 +31,7 @@ Parses a google citations over time from the main
 Citation page
 }
 \examples{
-\dontrun{
+if (!is_travis()) {
 library(httr)
 library(rvest) 
 url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"

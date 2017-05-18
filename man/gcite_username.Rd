@@ -22,7 +22,7 @@ A character vector of the username of the author
 Search Google Citation for an author username
 }
 \examples{
-\dontrun{
+if (!is_travis()) {
 gcite_username("John Muschelli")
 }
 }

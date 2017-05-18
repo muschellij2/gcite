@@ -27,7 +27,7 @@ A matrix of indices
 Parses a google citation indices (h-index, etc.) from main page
 }
 \examples{
-\dontrun{ 
+if (!is_travis()) {
 library(httr)
 library(rvest) 
 library(gcite)

@@ -30,7 +30,7 @@ A matrix of indices
 Parses a google citation indices (h-index, etc.) from main page
 }
 \examples{
-\dontrun{
+if (!is_travis()) {
 library(httr)
 library(rvest) 
 url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"

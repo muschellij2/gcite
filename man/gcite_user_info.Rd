@@ -27,7 +27,7 @@ string of the user name.
 Loops through pages for all information on Google Citations
 }
 \examples{
-\dontrun{
+if (!is_travis()) {
 df = gcite_user_info(user = "T9eqZgMAAAAJ")
 }
 }

@@ -9,7 +9,7 @@
 #' @importFrom rvest html_table html_nodes
 #' @importFrom stats reshape
 #' @examples 
-#' \dontrun{
+#' if (!is_travis()) {
 #' library(httr)
 #' library(rvest) 
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"

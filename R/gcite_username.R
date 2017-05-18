@@ -8,7 +8,7 @@
 #' 
 #' @return A character vector of the username of the author
 #' @examples
-#' \dontrun{
+#' if (!is_travis()) {
 #' gcite_username("John Muschelli")
 #' }
 #' @export

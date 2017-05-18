@@ -8,7 +8,7 @@
 #' @export
 #' @importFrom rvest html_table html_nodes
 #' @examples
-#' \dontrun{ 
+#' if (!is_travis()) {
 #' library(httr)
 #' library(rvest) 
 #' library(gcite)

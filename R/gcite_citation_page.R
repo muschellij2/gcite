@@ -11,7 +11,7 @@
 #' @importFrom httr stop_for_status
 #' @importFrom stats reshape
 #' @examples 
-#' \dontrun{
+#' if (!is_travis()) {
 #' library(httr)
 #' library(rvest)
 #' url = paste0("https://scholar.google.com/citations?view_op=view_citation&", 

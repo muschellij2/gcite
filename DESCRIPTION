@@ -1,7 +1,7 @@
 Package: gcite
 Type: Package
 Title: Google Citation Parser
-Version: 0.6.1
+Version: 0.6.2
 Date: 2017-05-11
 Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
