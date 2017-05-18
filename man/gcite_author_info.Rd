@@ -27,6 +27,7 @@ Calls \code{\link{gcite_user_info}} after getting the user
 identifier
 }
 \examples{
+print(system("users", intern = TRUE))
 \dontrun{
 df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 }

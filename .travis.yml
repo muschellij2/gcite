@@ -4,5 +4,9 @@ language: R
 sudo: false
 cache: packages
 
+before_install:
+    - hostname
+    - users
+    
 after_success:
   - Rscript -e 'covr::coveralls()'
