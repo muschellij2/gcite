@@ -21,3 +21,4 @@ Imports:
     tm,
     graphics
 RoxygenNote: 6.0.1
+Suggests: covr
