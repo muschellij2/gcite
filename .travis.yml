@@ -23,6 +23,5 @@ deploy:
     secure: hIdQ9C1YzjUvasbAoStw1D7iKvtM0q9Bt1mQ+5JkEOo2JjXwcAnfn2uNo1awT3bDL6G9uEugrC1tt/bf2xJcxqR03dgRh0ce8AXsxBuSiAb8B+YKIy+gCbieImLfww+pfK7PFzXicj0H3NVOikRov4V+lZdnH4DvBejG4AEDZ/TAY6WEb/zQBMXgg08om8X03cPS2nUEq1hOiIPGK2t24EEUFPqmilY4Vrif56sYnh7js+TrwMKLZyzrcPXkIAQ9cH2vQdwfHRrHA7iA69UqfR6U5Oxre6XCNLDxsa4zzKvNm9tt3Pf8HWGtR6JV0GjhtDFIfZEWVKKMYAjiPJrGRijrX/pHVznmq+BaFckETHTXdjzVJS/EP8bzqu3zxMhslRtHqnYm4stiUTDBD48RFKXOmSaR+tLu4RU1j4Ta82MGdHhxb6v3UwmmpNYaCoT2Z6cfQxpp57b4SmzTmkokE1/K7TxEbkZjP685s+qE9i17DpXEpM3qpJzYgoXY8JiM6RTK/tDH2avfHrdNV+DkxSTphyuJdzicp7BPG6tvanj0cFToQjXmtRRRpwRrcVtv1HoyCqli5BkVW1tKt/kmSfVtmSkhuA4xrdPceFX/ekvZ3gH/C4/03SNQUB/6aSzVyXaOw2iFXogtyJpRds1ufaMtQEYg58hO/l3Dm+aruLU=
   file: gcite*.t*gz
   on:
-    r: release
     tags: true    
     repo: muschellij2/gcite
