@@ -27,7 +27,11 @@ gcite_citation_index <- function(doc, ...){
 #' @rdname gcite_citation_index
 #' @export
 gcite_citation_index.xml_node = function(doc, ...) {
-  rvest::html_table(doc)
+  df = rvest::html_table(doc)
+  if (ncol(df) > 0) {
+    colnames(df)[1] = "index"
+  }
+  return(df)
 }
 
 #' @rdname gcite_citation_index
