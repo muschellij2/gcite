@@ -14,7 +14,8 @@
 #' @export
 #' @importFrom rvest html_attr html_text
 #' @importFrom utils menu
-gcite_username <- function(author,
+gcite_username <- function(
+  author,
                            verbose = TRUE,
                            ask = TRUE,
                            secure = TRUE) {
@@ -33,11 +34,13 @@ gcite_username <- function(author,
   doc = httr::content(res)
   
   
-  doc = html_nodes(doc, ".gs_scl")
-  doc = html_nodes(doc, xpath = '//div[ @class= "gsc_1usr_text"]')
+  # doc = html_nodes(doc, ".gs_scl")
+  doc = html_nodes(doc, ".gsc_1usr")
+  # doc = html_nodes(doc, xpath = '//div[ @class= "gsc_1usr_text"]')
   
-  users = html_nodes(doc, xpath = '//h3[ @class = "gsc_1usr_name"]//a')
-  hrefs = html_attr(users, "href")
+  # users = html_nodes(doc, xpath = '//h3[ @class = "gsc_1usr_name"]//a')
+  users = html_nodes(doc, ".gsc_oai_name")
+  hrefs = html_attr(html_nodes(users, "a"), "href")
   unames = sapply(hrefs, function(x){
     x = parse_url(x)
     x$query$user
@@ -45,14 +48,18 @@ gcite_username <- function(author,
   users = html_text(users)    
   
   L = as_list(doc)
+  # affils = html_nodes(doc, ".gsc_oai_aff")
+  # affils = html_text(affils)
   affils = sapply(L, function(x) {
     nx = names(x)
     x = x[ nx == "div"]
-    keep = sapply(x, attr, ".class") == "gsc_1usr_aff"
+    x = x$div
+    keep = sapply(x, attr, ".class") == "gsc_oai_aff"
     x = x[keep]
-    x = x$div[[1]]
     if (length(x) == 0) {
       x = NA
+    } else {
+      x = paste(unlist(x), collapse = "")
     }
     x
   })

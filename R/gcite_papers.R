@@ -58,16 +58,29 @@ gcite_papers.default = function(doc, ...) {
     x
   })
   parse_a = function(a) {
-    a = cbind(value = a, 
-              href = attr(a, "href"),
+    href = attr(a, "data-href")
+    if (is.null(href)) {
+      href = attr(a, "href")
+    }
+    value = a
+    if (length(value) == 0) {
+      value = NA
+    }
+    a = cbind(value = value, 
+              # href = attr(a, "href"),
+              href = href,
               class = attr(a, ".class"))
     a = data.frame(a, stringsAsFactors = FALSE)
   }
-  fake_a_df = data.frame(title = NA, 
-                         title_link = NA, n_citations = NA,
-                         n_citations_link = NA)
+  fake_a_df = data.frame(
+    title = NA, 
+    title_link = NA, 
+    n_citations = NA,
+    n_citations_link = NA)
+  # i=1
   get_data = function(x) {
-    # print(x)
+    # print(i)
+    # i <<- i +1
     nx = names(x)
     a = nx == "a"
     a = lapply(x[a], parse_a)
@@ -78,6 +91,7 @@ gcite_papers.default = function(doc, ...) {
     a$id = 1
     a$value = trimws(a$value)
     a$href = trimws(a$href)
+    a$class[ grepl("gsc_a_ac", a$class)] = "gsc_a_ac"
     a = reshape(a, direction = "wide", idvar = "id", 
                 timevar = "class", v.names = c("value", "href"))
     cn = colnames(a)

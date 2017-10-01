@@ -19,7 +19,7 @@
 #' ind = gcite_cite_over_time(url)
 #' doc = content(httr::GET(url))
 #' ind = gcite_cite_over_time(doc)
-#' ind_nodes = rvest::html_nodes(doc, "#gsc_g")[[1]]
+#' ind_nodes = rvest::html_nodes(doc, ".gsc_md_hist_b")
 #' ind = gcite_cite_over_time(ind_nodes)
 #' }
 gcite_cite_over_time <- function(doc, ...){
@@ -29,15 +29,15 @@ gcite_cite_over_time <- function(doc, ...){
 #' @rdname gcite_cite_over_time
 #' @export
 gcite_cite_over_time.xml_node = function(doc, ...) {
-  doc = xml2::as_list(doc)  
-  gcite_cite_over_time(doc, ...)
+  gcite_cite_over_time.default(doc, ...)
 }
 
 #' @rdname gcite_cite_over_time
 #' @export
 gcite_cite_over_time.xml_document = function(doc, ...) {
-  doc = rvest::html_node(doc, css = "#gsc_g")
-  doc = xml2::as_list(doc)  
+  # doc = rvest::html_node(doc, css = "#gsc_g")
+  doc = rvest::html_node(doc, css = ".gsc_md_hist_b")
+  # doc = rvest::html_node(doc, css = ".gsc_md_hist_w")
   gcite_cite_over_time(doc, ...)
 }
 
@@ -53,11 +53,14 @@ gcite_cite_over_time.character = function(doc, ...) {
 #' @rdname gcite_cite_over_time
 #' @export
 gcite_cite_over_time.default = function(doc, ...) {
-  full_cite_over_time = unlist(doc, recursive = FALSE)
-  cn = names(full_cite_over_time)
-  cn = gsub("^div[.]", "", cn)
-  names(full_cite_over_time) = cn
-  full_cite_over_time = gcite_graph(full_cite_over_time)
+  tdoc = rvest::html_nodes(doc, css = ".gsc_g_t")
+  tdoc = html_text(tdoc)
+  adoc = rvest::html_nodes(doc, css = ".gsc_g_a")
+  adoc = html_text(adoc)  
+  full_cite_over_time = data.frame(
+    year = as.numeric(tdoc), 
+    n_citations = as.numeric(adoc),
+    stringsAsFactors = FALSE)
   return(full_cite_over_time)
 }
 

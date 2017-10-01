@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if (!is_travis()) {
 #' df = gcite_user_info(user = "T9eqZgMAAAAJ")
 #' }
 gcite_user_info = function(
@@ -41,7 +41,8 @@ gcite_user_info = function(
   if (verbose) {
     message("Getting Overall citations over time")
   }  
-  overall_cite = gcite_main_graph(doc)
+  # overall_cite = gcite_main_graph(doc)
+  overall_cite = gcite_cite_over_time(doc)
   
   if (verbose) {
     message("Getting first set of papers")

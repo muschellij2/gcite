@@ -30,7 +30,7 @@
 #' @importFrom wordcloud wordcloud
 author_cloud = function(
   authors,
-  addstopwords = NULL,
+  addstopwords = gcite_stopwords(),
   author_pattern = NULL,
   split = ",",
   verbose=TRUE,
@@ -55,7 +55,7 @@ author_cloud = function(
 author_frequency = function(authors,
                             author_pattern = NULL,
                             split = ",",
-                            addstopwords = NULL,
+                            addstopwords = gcite_stopwords(),
                             verbose=TRUE) {
   if (verbose) {
     if (!is.null(author_pattern)) {

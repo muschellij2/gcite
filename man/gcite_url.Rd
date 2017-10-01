@@ -2,9 +2,15 @@
 % Please edit documentation in R/gcite_url.R
 \name{gcite_url}
 \alias{gcite_url}
+\alias{gcite_base_url}
+\alias{gcite_user_url}
 \title{Google Citations URL}
 \usage{
 gcite_url(url, cstart = 0, pagesize = 100)
+
+gcite_base_url(secure = TRUE)
+
+gcite_user_url(user, secure = TRUE)
 }
 \arguments{
 \item{url}{URL of the google citations page}
@@ -12,6 +18,10 @@ gcite_url(url, cstart = 0, pagesize = 100)
 \item{cstart}{Starting value for the citation page}
 
 \item{pagesize}{number of citations to return, max is 100}
+
+\item{secure}{should https be used (default), instead of http}
+
+\item{user}{Username/user ID for Google Scholar Citations}
 }
 \value{
 A character string

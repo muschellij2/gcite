@@ -39,7 +39,7 @@ url = gcite_url(url = url, pagesize = 10, cstart = 0)
 ind = gcite_cite_over_time(url)
 doc = content(httr::GET(url))
 ind = gcite_cite_over_time(doc)
-ind_nodes = rvest::html_nodes(doc, "#gsc_g")[[1]]
+ind_nodes = rvest::html_nodes(doc, ".gsc_md_hist_b")
 ind = gcite_cite_over_time(ind_nodes)
 }
 }

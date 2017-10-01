@@ -23,7 +23,7 @@
 #' @importFrom wordcloud wordcloud
 title_cloud = function(
   titles,
-  addstopwords = NULL,
+  addstopwords = gcite_stopwords(),
   ...) {
   freq_df = title_word_frequency(titles, 
                                  addstopwords = addstopwords)

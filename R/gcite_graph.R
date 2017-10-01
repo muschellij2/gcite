@@ -21,7 +21,8 @@ gcite_graph.xml_node = function(citations, ...) {
 #' @rdname gcite_graph
 #' @export
 gcite_graph.xml_document = function(citations, ...) {
-  citations = rvest::html_node(citations, css = "#gsc_graph_bars")
+  # citations = rvest::html_node(citations, css = "#gsc_graph_bars")
+  citations = rvest::html_node(citations, css = "#gsc_vcd_graph_bars")
   gcite_graph(citations, ...)
 }
 

@@ -6,7 +6,7 @@
 \alias{title_word_frequency}
 \title{Make Wordcloud of Titles from Papers}
 \usage{
-title_cloud(titles, addstopwords = NULL, ...)
+title_cloud(titles, addstopwords = gcite_stopwords(), ...)
 
 paper_cloud(...)
 

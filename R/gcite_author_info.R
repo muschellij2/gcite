@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' print(system("users", intern = TRUE))
-#' \dontrun{
+#' if (!is_travis()) {
 #' df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 #' }
 gcite_author_info = function(author, 
