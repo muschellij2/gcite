@@ -77,8 +77,19 @@ gcite_citation_page.default = function(doc, title = NULL, ...) {
   df = data.frame(field = fields, value = vals, stringsAsFactors = FALSE)
   keep_fields = c("authors", "publication date", 
                   "journal", "volume", "issue", 
-                  "pages", "publisher", "description")
+                  "pages", "publisher", "description",
+                  "total citations")
   df$field = tolower(df$field)
+  
+  #############################
+  # need different way to get total citations
+  #############################  
+  cites = html_nodes(doc, xpath = '//a[@class = "gsc_oms_link"]')
+  cites = html_text(cites)
+  cites = cites[ grep("cited", tolower(cites))]
+  cites = trimws(sub("Cited by", "", cites))
+  
+  df$value[ df$field %in% "total citations" ] = cites
   df = df[ df$field %in% 
              keep_fields,]
   
@@ -95,7 +106,7 @@ gcite_citation_page.default = function(doc, title = NULL, ...) {
   }
   wide$title = title
   
-  citations = rvest::html_node(doc, css = "#gsc_graph_bars")
+  citations = rvest::html_node(doc, css = "#gsc_vcd_graph_bars")
   citations = citations[!is.na(citations)]
   if ( length(citations) > 0) {
     citations = citations[[1]]
