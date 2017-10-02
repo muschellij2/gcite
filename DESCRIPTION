@@ -7,7 +7,7 @@ Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Scrapes Google Citation pages and creates data frames of 
     citations over time.
-License: GPL
+License: GPL-3
 LazyData: true
 LazyLoad: yes
 Imports:
