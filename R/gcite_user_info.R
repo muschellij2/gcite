@@ -78,6 +78,7 @@ gcite_user_info = function(
       urls = all_papers$title_link,
       verbose = verbose, 
       force = force, 
+      sleeptime = sleeptime,
       ... = ...)
     # if (verbose) {
     #   message("Reading citation pages")
