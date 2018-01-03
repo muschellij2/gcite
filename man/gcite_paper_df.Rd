@@ -4,7 +4,7 @@
 \alias{gcite_paper_df}
 \title{Get Paper Data Frame from Title URLs}
 \usage{
-gcite_paper_df(urls, verbose = TRUE, force = FALSE, ...)
+gcite_paper_df(urls, verbose = TRUE, force = FALSE, sleeptime = 0, ...)
 }
 \arguments{
 \item{urls}{A character vector of urls, from 
@@ -14,6 +14,9 @@ gcite_paper_df(urls, verbose = TRUE, force = FALSE, ...)
 
 \item{force}{If passing a URL and there is a failure, should the 
 program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
+
+\item{sleeptime}{time in seconds between http requests, 
+to avoid Google Scholar rate limit}
 
 \item{...}{Additional arguments passed to \code{\link{GET}}}
 }

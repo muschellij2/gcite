@@ -7,12 +7,15 @@
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
 #' @param read_citations Should all citation pages be read?
+#' @param sleeptime time in seconds between http requests, 
+#' to avoid Google Scholar rate limit 
 #' @param ... Additional arguments passed to \code{\link{GET}}
 #'
 #' @return A list of citations, citation indices, and a 
 #' \code{data.frame} of authors, journal, and citations, and a 
 #' \code{data.frame} of the links to all paper URLs and the character
 #' string of the user name.
+#' 
 #' @export
 #'
 #' @examples
@@ -25,6 +28,7 @@ gcite_user_info = function(
   secure = TRUE,
   force = FALSE,
   read_citations = TRUE,
+  sleeptime = 0,
   ...) {
   url = paste0("http", ifelse(secure, "s", ""), 
                "://scholar.google.com/citations?user=", user)

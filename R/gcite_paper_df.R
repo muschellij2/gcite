@@ -5,6 +5,8 @@
 #' @param verbose Print diagnostic messages
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
+#' @param sleeptime time in seconds between http requests, 
+#' to avoid Google Scholar rate limit 
 #' @param ... Additional arguments passed to \code{\link{GET}}
 #'
 #' @return A \code{data.frame} of authors, journal, and citations
@@ -20,6 +22,7 @@ gcite_paper_df = function(
   urls, 
   verbose = TRUE, 
   force = FALSE,
+  sleeptime = 0,
   ...) {  
   
   if (verbose) {
@@ -27,9 +30,13 @@ gcite_paper_df = function(
   }  
   paper_info = pbapply::pblapply(
     urls, 
-    gcite_citation_page,
-    force = force,
-    ... = ...)
+    function(x) {
+      Sys.sleep(sleeptime)
+      gcite_citation_page(x,
+                          force = force,
+                          ... = ...)
+    }
+  )
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
   cn = colnames(paper_df)

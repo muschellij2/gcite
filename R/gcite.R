@@ -10,7 +10,9 @@
 #' @param warn should warnings be printed from wordcloud? 
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
-#' 
+#' @param sleeptime time in seconds between http requests, 
+#' to avoid Google Scholar rate limit 
+#'  
 #' @param ... additional options passed to \code{\link{gcite_user_info}}
 #' and therefore \code{\link{GET}}
 #' 
@@ -24,15 +26,21 @@ gcite = function(author,
                  title_args = list(),
                  warn = FALSE,
                  force = FALSE,
+                 sleeptime = 0,
                  ...) {
   if (missing(user) && missing(author)) {
     stop("Must specify either the user or author")
   }
   if (!missing(user)) {
-    L = gcite_user_info(user = user, force = force, ...)
+    L = gcite_user_info(
+      user = user, force = force, 
+      sleeptime = sleeptime, ...)
   } else {
     if (!missing(author)) {
-      L = gcite_author_info(author = author, force = force, ...)
+      L = gcite_author_info(
+        author = author, force = force, 
+        sleeptime = sleeptime, 
+        ...)
     } else {
       stop("User and author not specified!")
     } 
