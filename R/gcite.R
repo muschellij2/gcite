@@ -30,10 +30,13 @@ gcite = function(author,
   }
   if (!missing(user)) {
     L = gcite_user_info(user = user, force = force, ...)
+  } else {
+    if (!missing(author)) {
+      L = gcite_author_info(author = author, force = force, ...)
+    } else {
+      stop("User and author not specified!")
+    } 
   }
-  if (!missing(author)) {
-    L = gcite_author_info(author = author, force = force, ...)
-  }  
   paper_df = L$paper_df
   if (plot_wordcloud) {
     if (is.null(paper_df)) {
@@ -41,11 +44,11 @@ gcite = function(author,
                      "paper_df output, ",
                      "may be rate limited or read_citations = FALSE"))
     } else {
-    gcite_wordcloud(
-      paper_df = paper_df, 
-      author_args = author_args,
-      title_args = title_args,
-      warn = warn)
+      gcite_wordcloud(
+        paper_df = paper_df, 
+        author_args = author_args,
+        title_args = title_args,
+        warn = warn)
     }
   }
   return(L)
