@@ -74,7 +74,7 @@ gcite_citation_page.character = function(doc, title = NULL,
 #' @export
 gcite_citation_page.list = function(doc, title = NULL, 
                                     force = FALSE, ...) {
-  lapply(doc, gcite_citation_page, title = title, ...)
+  lapply(doc, gcite_citation_page, title = title, force = force, ...)
 }
 
 #' @rdname gcite_citation_page

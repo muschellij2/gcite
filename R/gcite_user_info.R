@@ -6,7 +6,7 @@
 #' @param secure use https vs. http
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
-#'  
+#' @param read_citations Should all citation pages be read?
 #' @param ... Additional arguments passed to \code{\link{GET}}
 #'
 #' @return A list of citations, citation indices, and a 
@@ -24,6 +24,7 @@ gcite_user_info = function(
   verbose = TRUE, 
   secure = TRUE,
   force = FALSE,
+  read_citations = TRUE,
   ...) {
   url = paste0("http", ifelse(secure, "s", ""), 
                "://scholar.google.com/citations?user=", user)
@@ -67,31 +68,33 @@ gcite_user_info = function(
     cstart = pagesize + cstart
   }
   
-  if (verbose) {
-    message("Reading citation pages")
-  }  
-  urls = all_papers$title_link
-  paper_info = pbapply::pblapply(
-    urls, 
-    gcite_citation_page,
-    force = force,
-    ... = ...)
-  paper_df = data.table::rbindlist(paper_info, fill = TRUE)
-  paper_df = as.data.frame(paper_df)
-  cn = colnames(paper_df)
-  suppressWarnings({
-    num_cn = as.numeric(cn)
-  })
-  cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
-  paper_df = paper_df[, cn]
-  
+  paper_df = NULL
+  if (read_citations) {
+    if (verbose) {
+      message("Reading citation pages")
+    }  
+    urls = all_papers$title_link
+    paper_info = pbapply::pblapply(
+      urls, 
+      gcite_citation_page,
+      force = force,
+      ... = ...)
+    paper_df = data.table::rbindlist(paper_info, fill = TRUE)
+    paper_df = as.data.frame(paper_df)
+    cn = colnames(paper_df)
+    suppressWarnings({
+      num_cn = as.numeric(cn)
+    })
+    cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
+    paper_df = paper_df[, cn]
+  }
   # paper_df$title =
   L = list(citation_indices = cite_ind,
            overall_citations = overall_cite,
            all_papers = all_papers,
-           paper_df = paper_df,
            user = user
   )
+  L$paper_df = paper_df
   return(L)
 }
 
