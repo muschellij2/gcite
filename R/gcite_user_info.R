@@ -70,23 +70,28 @@ gcite_user_info = function(
   
   paper_df = NULL
   if (read_citations) {
-    if (verbose) {
-      message("Reading citation pages")
-    }  
-    urls = all_papers$title_link
-    paper_info = pbapply::pblapply(
-      urls, 
-      gcite_citation_page,
-      force = force,
+    paper_df = gcite_paper_df(
+      urls = all_papers$title_link,
+      verbose = verbose, 
+      force = force, 
       ... = ...)
-    paper_df = data.table::rbindlist(paper_info, fill = TRUE)
-    paper_df = as.data.frame(paper_df)
-    cn = colnames(paper_df)
-    suppressWarnings({
-      num_cn = as.numeric(cn)
-    })
-    cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
-    paper_df = paper_df[, cn]
+    # if (verbose) {
+    #   message("Reading citation pages")
+    # }  
+    # urls = all_papers$title_link
+    # paper_info = pbapply::pblapply(
+    #   urls, 
+    #   gcite_citation_page,
+    #   force = force,
+    #   ... = ...)
+    # paper_df = data.table::rbindlist(paper_info, fill = TRUE)
+    # paper_df = as.data.frame(paper_df)
+    # cn = colnames(paper_df)
+    # suppressWarnings({
+    #   num_cn = as.numeric(cn)
+    # })
+    # cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
+    # paper_df = paper_df[, cn]
   }
   # paper_df$title =
   L = list(citation_indices = cite_ind,
