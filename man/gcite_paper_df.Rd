@@ -23,3 +23,11 @@ A \code{data.frame} of authors, journal, and citations
 \description{
 Get Paper Data Frame from Title URLs
 }
+\examples{
+if (!is_travis()) {
+L = gcite_user_info(user = "T9eqZgMAAAAJ", 
+read_citations = FALSE)
+urls = L$all_papers$title_link
+paper_df = gcite_paper_df(urls = urls, force = TRUE)
+} 
+}
