@@ -11,12 +11,20 @@
 #' @importFrom httr set_cookies
 # #' @export
 set_cookies_txt = function(file) {
-  x = readLines(file)
+  
+  x = readLines(file, warn = FALSE)
   x = trimws(x)
   x = x[ !grepl("^#", x)]
   
-  xx = stringr::str_split_fixed(
-    x, pattern = "\t", n = 7)
+  xx = strsplit(
+    x, split = "\t")
+  n = 7
+  f = function(x) {
+    x = c(x, rep("", length = max(n - length(x), 0)))
+  }
+  xx = t(matrix(sapply(xx, f), nrow = n))
+
+  
   colnames(xx) = c(
     "domain", "flag", "path", "secure", 
     "expiration", "name", "value")
