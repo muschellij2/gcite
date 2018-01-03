@@ -8,7 +8,7 @@ gcite_paper_df(urls, verbose = TRUE, force = FALSE, ...)
 }
 \arguments{
 \item{urls}{A character vector of urls, from 
-\code{\link{all_papers$title_link}}}
+\code{all_papers$title_link}}
 
 \item{verbose}{Print diagnostic messages}
 
@@ -16,8 +16,6 @@ gcite_paper_df(urls, verbose = TRUE, force = FALSE, ...)
 program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
 
 \item{...}{Additional arguments passed to \code{\link{GET}}}
-
-\item{secure}{use https vs. http}
 }
 \value{
 A \code{data.frame} of authors, journal, and citations

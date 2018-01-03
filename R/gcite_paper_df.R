@@ -1,9 +1,8 @@
 #' Get Paper Data Frame from Title URLs
 #'
 #' @param urls A character vector of urls, from 
-#' \code{\link{all_papers$title_link}}
+#' \code{all_papers$title_link}
 #' @param verbose Print diagnostic messages
-#' @param secure use https vs. http
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
 #' @param ... Additional arguments passed to \code{\link{GET}}
