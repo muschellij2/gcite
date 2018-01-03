@@ -22,7 +22,7 @@ gcite_user_info = function(
   user, pagesize = 100,
   verbose = TRUE,
   secure = TRUE,
-  sleeptime=0
+  sleeptime=0,
   ...) {
   url = paste0("http", ifelse(secure, "s", ""),
                "://scholar.google.com/citations?user=", user)
