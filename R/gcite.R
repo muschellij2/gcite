@@ -36,11 +36,17 @@ gcite = function(author,
   }  
   paper_df = L$paper_df
   if (plot_wordcloud) {
+    if (is.null(paper_df)) {
+      warning(paste0("Combination of arguments did not result in ", 
+                     "paper_df output, ",
+                     "may be rate limited or read_citations = FALSE"))
+    } else {
     gcite_wordcloud(
       paper_df = paper_df, 
       author_args = author_args,
       title_args = title_args,
       warn = warn)
+    }
   }
   return(L)
 }
