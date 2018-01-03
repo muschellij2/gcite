@@ -68,7 +68,7 @@ gcite_citation_page.list = function(doc, title = NULL, ...) {
 #' @export
 gcite_citation_page.default = function(doc, title = NULL, sleeptime = 0, ...) {
 
-  Sys.sleep(sleeptime)
+  Sys.sleep(5)
 
   # fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
   fields = html_nodes(doc, xpath = '//div[@class = "gsc_vcd_field"]')
