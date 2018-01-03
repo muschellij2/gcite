@@ -60,7 +60,7 @@ gcite_user_info = function(
   while (!is.null(papers)) {
     url = gcite_url(url, pagesize = pagesize, cstart = cstart)
     papers = gcite_papers(url)
-    Sys.sleep(30)
+    Sys.sleep(10)
     all_papers = rbind(all_papers, papers)
     cstart = pagesize + cstart
   }
@@ -69,7 +69,7 @@ gcite_user_info = function(
     message("Reading citation pages")
   }
   urls = all_papers$title_link
-  paper_info = pbapply::pblapply(urls, gcite_citation_page)
+  paper_info = apply(urls, gcite_citation_page)
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
   cn = colnames(paper_df)
