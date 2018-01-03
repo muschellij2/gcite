@@ -60,7 +60,7 @@ gcite_user_info = function(
   while (!is.null(papers)) {
     url = gcite_url(url, pagesize = pagesize, cstart = cstart)
     papers = gcite_papers(url)
-    Sys.sleep(10)
+    Sys.sleep(30)
     all_papers = rbind(all_papers, papers)
     cstart = pagesize + cstart
   }
