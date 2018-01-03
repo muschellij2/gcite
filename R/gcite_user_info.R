@@ -69,7 +69,7 @@ gcite_user_info = function(
     message("Reading citation pages")
   }
   urls = all_papers$title_link
-  paper_info = apply(urls, gcite_citation_page)
+  paper_info = pbapply::pbapply(urls, gcite_citation_page)
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
   cn = colnames(paper_df)
