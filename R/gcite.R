@@ -13,7 +13,7 @@
 gcite = function(author,
                  user,
                  plot_wordcloud = TRUE,
-                 sleeptime=0,
+                 sleeptime = 0,
                  ...) {
   if (missing(user) && missing(author)) {
     stop("Must specify either the user or author")

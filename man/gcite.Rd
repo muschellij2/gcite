@@ -4,7 +4,7 @@
 \alias{gcite}
 \title{Google Citations Information}
 \usage{
-gcite(author, user, plot_wordcloud = TRUE, ...)
+gcite(author, user, plot_wordcloud = TRUE, sleeptime = 0, ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -12,6 +12,8 @@ gcite(author, user, plot_wordcloud = TRUE, ...)
 \item{user}{user ID for google Citations}
 
 \item{plot_wordcloud}{should the wordcloud be plotted}
+
+\item{sleeptime}{= time in seconds between http requests, to avoid Google Scholar rate limit}
 
 \item{...}{additional options passed to \code{\link{gcite_wordcloud}}}
 }

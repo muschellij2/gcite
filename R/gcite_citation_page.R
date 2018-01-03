@@ -66,7 +66,7 @@ gcite_citation_page.list = function(doc, title = NULL, ...) {
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.default = function(doc, title = NULL, sleeptime=0, ...) {
+gcite_citation_page.default = function(doc, title = NULL, sleeptime = 0, ...) {
 
   Sys.sleep(sleeptime)
 

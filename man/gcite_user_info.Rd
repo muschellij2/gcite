@@ -4,7 +4,8 @@
 \alias{gcite_user_info}
 \title{Getting User Information of papers}
 \usage{
-gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE, ...)
+gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
+  sleeptime = 0, ...)
 }
 \arguments{
 \item{user}{user ID for google Citations}
@@ -15,11 +16,13 @@ gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE, ...)
 
 \item{secure}{use https vs. http}
 
+\item{sleeptime}{= time in seconds between http requests, to avoid Google Scholar rate limit}
+
 \item{...}{Not used}
 }
 \value{
-A list of citations, citation indices, and a 
-\code{data.frame} of authors, journal, and citations, and a 
+A list of citations, citation indices, and a
+\code{data.frame} of authors, journal, and citations, and a
 \code{data.frame} of the links to all paper URLs and the character
 string of the user name.
 }

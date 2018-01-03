@@ -19,7 +19,7 @@ gcite_citation_page(doc, title = NULL, ...)
 
 \method{gcite_citation_page}{list}(doc, title = NULL, ...)
 
-\method{gcite_citation_page}{default}(doc, title = NULL, ...)
+\method{gcite_citation_page}{default}(doc, title = NULL, sleeptime = 0, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
@@ -27,6 +27,8 @@ gcite_citation_page(doc, title = NULL, ...)
 \item{title}{title of the article}
 
 \item{...}{not currently used}
+
+\item{sleeptime}{= time in seconds between http requests, to avoid Google Scholar rate limit}
 }
 \value{
 A matrix of indices
@@ -38,15 +40,15 @@ Parses a google citation indices (h-index, etc.) from main page
 if (!is_travis()) {
 library(httr)
 library(rvest)
-url = paste0("https://scholar.google.com/citations?view_op=view_citation&", 
-"hl=en&oe=ASCII&user=T9eqZgMAAAAJ&pagesize=100&", 
+url = paste0("https://scholar.google.com/citations?view_op=view_citation&",
+"hl=en&oe=ASCII&user=T9eqZgMAAAAJ&pagesize=100&",
 "citation_for_view=T9eqZgMAAAAJ:W7OEmFMy1HYC")
-url = gcite_url(url = url, pagesize = 10, cstart = 0) 
+url = gcite_url(url = url, pagesize = 10, cstart = 0)
 ind = gcite_citation_page(url)
 doc = content(httr::GET(url))
 ind = gcite_citation_page(doc)
 ind_nodes = html_nodes(doc, "#gsc_vcd_table div")
-ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')  
+ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')
 ind = gcite_citation_page(ind_nodes)
 }
 }

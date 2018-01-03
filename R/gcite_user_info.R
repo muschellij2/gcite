@@ -13,6 +13,7 @@
 #' \code{data.frame} of the links to all paper URLs and the character
 #' string of the user name.
 #' @export
+#' @importFrom curry tail_curry
 #'
 #' @examples
 #' if (!is_travis()) {
@@ -22,7 +23,7 @@ gcite_user_info = function(
   user, pagesize = 100,
   verbose = TRUE,
   secure = TRUE,
-  sleeptime=0,
+  sleeptime = 0,
   ...) {
   url = paste0("http", ifelse(secure, "s", ""),
                "://scholar.google.com/citations?user=", user)
@@ -71,7 +72,7 @@ gcite_user_info = function(
     message("Reading citation pages")
   }
   urls = all_papers$title_link
-  paper_info = pbapply::pblapply(urls, gcite_citation_page(sleeptime=sleeptime))
+  paper_info = pbapply::pblapply(urls, tail_curry(gcite_citation_page,sleeptime))
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
   cn = colnames(paper_df)
