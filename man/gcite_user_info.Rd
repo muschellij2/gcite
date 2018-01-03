@@ -4,7 +4,8 @@
 \alias{gcite_user_info}
 \title{Getting User Information of papers}
 \usage{
-gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE, ...)
+gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
+  force = FALSE, ...)
 }
 \arguments{
 \item{user}{user ID for google Citations}
@@ -15,7 +16,10 @@ gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE, ...)
 
 \item{secure}{use https vs. http}
 
-\item{...}{Not used}
+\item{force}{If passing a URL and there is a failure, should the 
+program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
+
+\item{...}{Additional arguments passed to \code{\link{GET}}}
 }
 \value{
 A list of citations, citation indices, and a 

@@ -18,7 +18,8 @@ gcite_citation_index(doc, ...)
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
 
-\item{...}{not currently used}
+\item{...}{Additional arguments passed to \code{\link{GET}} if 
+\code{doc} is a URL}
 }
 \value{
 A matrix of indices

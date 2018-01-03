@@ -21,7 +21,7 @@ gcite_cite_over_time(doc, ...)
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
 
-\item{...}{not currently used}
+\item{...}{arguments passed to \code{\link{GET}}}
 }
 \value{
 A matrix of citations

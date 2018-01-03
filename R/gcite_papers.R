@@ -2,7 +2,8 @@
 #' @description Parses a google citation indices (h-index, etc.) from main page
 #'
 #' @param doc A xml_document or the url for the main page
-#' @param ... not currently used
+#' @param ... Additional arguments passed to \code{\link{GET}} if \code{doc}
+#' is a URL
 #'
 #' @return A matrix of indices
 #' @export
@@ -28,23 +29,23 @@ gcite_papers <- function(doc, ...){
 #' @export
 gcite_papers.xml_nodeset = function(doc, ...) {
   doc = as_list(doc)[[1]]
-  gcite_papers(doc, ...)
+  gcite_papers(doc)
 }
 
 #' @rdname gcite_papers
 #' @export
 gcite_papers.xml_document = function(doc, ...) {
   doc = rvest::html_nodes(doc, css = "#gsc_a_b")
-  gcite_papers(doc, ...)
+  gcite_papers(doc)
 }
 
 #' @rdname gcite_papers
 #' @export
 gcite_papers.character = function(doc, ...) {
-  res = httr::GET(url = doc)
+  res = httr::GET(url = doc, ...)
   stop_for_status(res)
   doc = httr::content(res)
-  gcite_papers(doc, ...)
+  gcite_papers(doc)
 }
 
 #' @rdname gcite_papers

@@ -4,7 +4,8 @@
 \alias{gcite}
 \title{Google Citations Information}
 \usage{
-gcite(author, user, plot_wordcloud = TRUE, ...)
+gcite(author, user, plot_wordcloud = TRUE, author_args = list(),
+  title_args = list(), warn = FALSE, force = FALSE, ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -13,7 +14,17 @@ gcite(author, user, plot_wordcloud = TRUE, ...)
 
 \item{plot_wordcloud}{should the wordcloud be plotted}
 
-\item{...}{additional options passed to \code{\link{gcite_wordcloud}}}
+\item{author_args}{Arguments to pass to \code{\link{author_cloud}}}
+
+\item{title_args}{Arguments to pass to \code{\link{title_cloud}}}
+
+\item{warn}{should warnings be printed from wordcloud?}
+
+\item{force}{If passing a URL and there is a failure, should the 
+program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
+
+\item{...}{additional options passed to \code{\link{gcite_user_info}}
+and therefore \code{\link{GET}}}
 }
 \value{
 List from either \code{\link{gcite_user_info}}

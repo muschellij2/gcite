@@ -21,7 +21,7 @@ gcite_graph(citations, ...)
 \arguments{
 \item{citations}{A list of nodes or xml_node}
 
-\item{...}{not currently used}
+\item{...}{arguments passed to \code{\link{GET}}}
 }
 \value{
 A matrix of citations and years

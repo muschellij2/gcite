@@ -5,6 +5,7 @@
 #' @param verbose Verbose diagnostic printing
 #' @param ask If multiple authors are found, should a menu be given
 #' @param secure use https vs. http
+#' @param ... arguments passed to \code{\link{GET}}
 #' 
 #' @return A character vector of the username of the author
 #' @examples
@@ -16,9 +17,10 @@
 #' @importFrom utils menu
 gcite_username <- function(
   author,
-                           verbose = TRUE,
-                           ask = TRUE,
-                           secure = TRUE) {
+  verbose = TRUE,
+  ask = TRUE,
+  secure = TRUE,
+  ...) {
   auth.names <- strsplit(author, " ")[[1]]
   auth.names <- paste(auth.names[1:length(auth.names)],
                       sep = "", collapse = "+")
@@ -29,7 +31,7 @@ gcite_username <- function(
     auth.names
   )
   
-  res = httr::GET(url = url)
+  res = httr::GET(url = url, ...)
   stop_for_status(res)
   doc = httr::content(res)
   

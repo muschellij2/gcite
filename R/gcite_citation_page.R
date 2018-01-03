@@ -3,12 +3,14 @@
 #'
 #' @param doc A xml_document or the url for the main page
 #' @param title title of the article 
-#' @param ... not currently used
+#' @param force If passing a URL and there is a failure, should the 
+#' program return \code{NULL}?
+#' @param ... arguments passed to \code{\link{GET}}
 #'
 #' @return A matrix of indices
 #' @export
 #' @importFrom rvest html_table html_nodes
-#' @importFrom httr stop_for_status
+#' @importFrom httr stop_for_status status_code warn_for_status
 #' @importFrom stats reshape
 #' @examples 
 #' if (!is_travis()) {
@@ -25,19 +27,22 @@
 #' ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')  
 #' ind = gcite_citation_page(ind_nodes)
 #' }
-gcite_citation_page <- function(doc, title = NULL, ...){
+gcite_citation_page <- function(doc, title = NULL, 
+                                force = FALSE, ...){
   UseMethod("gcite_citation_page")
 }
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.xml_nodeset = function(doc, title = NULL, ...) {
-  gcite_citation_page.default(doc, title = title, ...)
+gcite_citation_page.xml_nodeset = function(doc, title = NULL, 
+                                           force = FALSE, ...) {
+  gcite_citation_page.default(doc, title = title)
 }
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.xml_document = function(doc, title = NULL, ...) {
+gcite_citation_page.xml_document = function(doc, title = NULL,
+                                            force = FALSE, ...) {
   if (is.null(title)) {
     title = html_nodes(doc, "#gsc_vcd_title")
     title = html_text(title)
@@ -45,27 +50,37 @@ gcite_citation_page.xml_document = function(doc, title = NULL, ...) {
   # doc = html_nodes(doc, "#gsc_table div")
   doc = html_nodes(doc, "#gsc_vcd_table div")
   doc = html_nodes(doc, xpath = '//div[@class = "gs_scl"]')  
-  gcite_citation_page(doc, title = title, ...)
+  gcite_citation_page(doc, title = title)
 }
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.character = function(doc, title = NULL, ...) {
-  res = httr::GET(url = doc)
-  stop_for_status(res)
+gcite_citation_page.character = function(doc, title = NULL, 
+                                         force = FALSE, ...) {
+  res = httr::GET(url = doc, ...)
+  if (force) {
+    if (httr::status_code(res) > 300) {
+      warn_for_status(res)
+      return(NULL)
+    }
+  } else {
+    stop_for_status(res)
+  }
   doc = httr::content(res)
-  gcite_citation_page(doc, title = title, ...)
+  gcite_citation_page(doc, title = title)
 }
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.list = function(doc, title = NULL, ...) {
+gcite_citation_page.list = function(doc, title = NULL, 
+                                    force = FALSE, ...) {
   lapply(doc, gcite_citation_page, title = title, ...)
 }
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.default = function(doc, title = NULL, ...) {
+gcite_citation_page.default = function(doc, title = NULL,
+                                       force = FALSE, ...) {
   
   # fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
   fields = html_nodes(doc, xpath = '//div[@class = "gsc_vcd_field"]')

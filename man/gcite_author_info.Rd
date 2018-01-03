@@ -4,7 +4,8 @@
 \alias{gcite_author_info}
 \title{Getting User Information from name}
 \usage{
-gcite_author_info(author, verbose = TRUE, ask = TRUE, secure = TRUE, ...)
+gcite_author_info(author, verbose = TRUE, ask = TRUE, secure = TRUE,
+  force = FALSE, ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -15,7 +16,10 @@ gcite_author_info(author, verbose = TRUE, ask = TRUE, secure = TRUE, ...)
 
 \item{secure}{use https vs. http}
 
-\item{...}{arguments passed to \code{\link{gcite_user_info}}}
+\item{force}{If passing a URL and there is a failure, should the 
+program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
+
+\item{...}{arguments passed to \code{\link{GET}}}
 }
 \value{
 A list of citations, citation indices, and a 
