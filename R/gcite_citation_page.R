@@ -3,6 +3,7 @@
 #'
 #' @param doc A xml_document or the url for the main page
 #' @param title title of the article
+#' @param sleeptime = time in seconds between http requests, to avoid Google Scholar rate limit
 #' @param ... not currently used
 #'
 #' @return A matrix of indices
@@ -65,9 +66,9 @@ gcite_citation_page.list = function(doc, title = NULL, ...) {
 
 #' @rdname gcite_citation_page
 #' @export
-gcite_citation_page.default = function(doc, title = NULL, ...) {
+gcite_citation_page.default = function(doc, title = NULL, sleeptime=0, ...) {
 
-  Sys.sleep(1)
+  Sys.sleep(sleeptime)
 
   # fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
   fields = html_nodes(doc, xpath = '//div[@class = "gsc_vcd_field"]')

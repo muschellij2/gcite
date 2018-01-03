@@ -4,6 +4,7 @@
 #' @param pagesize Size of pages, max 100, passed to \code{\link{gcite_url}}
 #' @param verbose Print diagnostic messages
 #' @param secure use https vs. http
+#' @param sleeptime = time in seconds between http requests, to avoid Google Scholar rate limit
 #'
 #' @param ... Not used
 #'
@@ -21,6 +22,7 @@ gcite_user_info = function(
   user, pagesize = 100,
   verbose = TRUE,
   secure = TRUE,
+  sleeptime=0
   ...) {
   url = paste0("http", ifelse(secure, "s", ""),
                "://scholar.google.com/citations?user=", user)
@@ -60,7 +62,7 @@ gcite_user_info = function(
   while (!is.null(papers)) {
     url = gcite_url(url, pagesize = pagesize, cstart = cstart)
     papers = gcite_papers(url)
-    Sys.sleep(1)
+    Sys.sleep(sleeptime)
     all_papers = rbind(all_papers, papers)
     cstart = pagesize + cstart
   }
@@ -69,7 +71,7 @@ gcite_user_info = function(
     message("Reading citation pages")
   }
   urls = all_papers$title_link
-  paper_info = pbapply::pblapply(urls, gcite_citation_page)
+  paper_info = pbapply::pblapply(urls, gcite_citation_page(sleeptime=sleeptime))
   paper_df = data.table::rbindlist(paper_info, fill = TRUE)
   paper_df = as.data.frame(paper_df)
   cn = colnames(paper_df)
