@@ -5,7 +5,7 @@ Version: 0.9.1
 Date: 2018-01-03
 Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: Scrapes Google Citation pages and creates data frames of 
+Description: Scrapes Google Citation pages and creates data frames of
     citations over time.
 License: GPL-3
 LazyData: true
@@ -19,9 +19,10 @@ Imports:
     data.table,
     wordcloud,
     tm,
+    curry,
     graphics
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
-Suggests: 
+Suggests:
     covr,
     testthat
