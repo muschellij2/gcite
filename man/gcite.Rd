@@ -20,10 +20,10 @@ gcite(author, user, plot_wordcloud = TRUE, author_args = list(),
 
 \item{warn}{should warnings be printed from wordcloud?}
 
-\item{force}{If passing a URL and there is a failure, should the 
+\item{force}{If passing a URL and there is a failure, should the
 program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
 
-\item{sleeptime}{time in seconds between http requests, 
+\item{sleeptime}{time in seconds between http requests,
 to avoid Google Scholar rate limit}
 
 \item{...}{additional options passed to \code{\link{gcite_user_info}}

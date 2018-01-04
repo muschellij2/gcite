@@ -12,6 +12,20 @@ You can install `gcite` from github with:
 
 
 ``` r
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("muschellij2/gcite")
 ```
+
+## Using
+
+You can run the package as follows:
+
+``` r
+library("gcite")
+out = gcite(author="Matthew Berryman",user="HpLxAzwAAAAJ")
+```
+where the user ID string comes from the user=ID part of the Google Scholar URL after navigating to a scholar's profile.
+
+## Further documentation
+
+Documentation on the functions can be found using the man pages in R by running `?command` where `command` corresponds to a function name in this library (after having run `library("gcite")` first, of course).
