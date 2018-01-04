@@ -2,7 +2,8 @@
 #' @description Parses a google citation indices (h-index, etc.) from main page
 #'
 #' @param doc A xml_document or the url for the main page
-#' @param ... not currently used
+#' @param ... Additional arguments passed to \code{\link{GET}} if
+#' \code{doc} is a URL
 #'
 #' @return A matrix of indices
 #' @export
@@ -10,10 +11,10 @@
 #' @examples
 #' if (!is_travis()) {
 #' library(httr)
-#' library(rvest) 
+#' library(rvest)
 #' library(gcite)
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
-#' url = gcite_url(url = url, pagesize = 10, cstart = 0) 
+#' url = gcite_url(url = url, pagesize = 10, cstart = 0)
 #' ind = gcite_citation_index(url)
 #' doc = content(httr::GET(url))
 #' ind = gcite_citation_index(doc)
@@ -38,16 +39,14 @@ gcite_citation_index.xml_node = function(doc, ...) {
 #' @export
 gcite_citation_index.xml_document = function(doc, ...) {
   doc = rvest::html_nodes(doc, "#gsc_rsb_st")[[1]]
-  gcite_citation_index(doc, ...)
+  gcite_citation_index(doc)
 }
 
 #' @rdname gcite_citation_index
 #' @export
 gcite_citation_index.character = function(doc, ...) {
-  res = httr::GET(url = doc)
+  res = httr::GET(url = doc, ...)
   stop_for_status(res)
   doc = httr::content(res)
-  gcite_citation_index(doc, ...)
+  gcite_citation_index(doc)
 }
-
-

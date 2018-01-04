@@ -2,7 +2,7 @@
 #' @description Parses a google citation bar graph from html
 #'
 #' @param citations A list of nodes or xml_node
-#' @param ... not currently used
+#' @param ... arguments passed to \code{\link{GET}}
 #'
 #' @return A matrix of citations and years
 #' @export
@@ -24,10 +24,10 @@ gcite_main_graph.xml_document = function(citations, ...) {
 #' @rdname gcite_main_graph
 #' @export
 gcite_main_graph.character = function(citations, ...) {
-  res = httr::GET(url = citations)
+  res = httr::GET(url = citations, ...)
   stop_for_status(res)
   citations = httr::content(res)
-  gcite_main_graph(citations, ...)
+  gcite_main_graph(citations)
 }
 
 

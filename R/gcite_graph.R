@@ -2,7 +2,7 @@
 #' @description Parses a google citation bar graph from html
 #'
 #' @param citations A list of nodes or xml_node
-#' @param ... not currently used
+#' @param ... arguments passed to \code{\link{GET}}
 #'
 #' @return A matrix of citations and years
 #' @export
@@ -15,7 +15,7 @@ gcite_graph <- function(citations, ...){
 #' @export
 gcite_graph.xml_node = function(citations, ...) {
   citations = xml2::as_list(citations)
-  gcite_graph(citations, ...)
+  gcite_graph(citations)
 }
 
 #' @rdname gcite_graph
@@ -23,16 +23,16 @@ gcite_graph.xml_node = function(citations, ...) {
 gcite_graph.xml_document = function(citations, ...) {
   # citations = rvest::html_node(citations, css = "#gsc_graph_bars")
   citations = rvest::html_node(citations, css = "#gsc_vcd_graph_bars")
-  gcite_graph(citations, ...)
+  gcite_graph(citations)
 }
 
 #' @rdname gcite_graph
 #' @export
 gcite_graph.character = function(citations, ...) {
-  res = httr::GET(url = citations)
+  res = httr::GET(url = citations, ...)
   stop_for_status(res)
   citations = httr::content(res)
-  gcite_graph(citations, ...)
+  gcite_graph(citations)
 }
 
 

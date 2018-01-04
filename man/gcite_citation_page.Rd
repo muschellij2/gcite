@@ -9,26 +9,30 @@
 \alias{gcite_citation_page.default}
 \title{Parse Google Citation Index}
 \usage{
-gcite_citation_page(doc, title = NULL, ...)
+gcite_citation_page(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL, ...)
+\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL, force = FALSE,
+  ...)
 
-\method{gcite_citation_page}{xml_document}(doc, title = NULL, ...)
+\method{gcite_citation_page}{xml_document}(doc, title = NULL, force = FALSE,
+  ...)
 
-\method{gcite_citation_page}{character}(doc, title = NULL, ...)
+\method{gcite_citation_page}{character}(doc, title = NULL, force = FALSE,
+  ...)
 
-\method{gcite_citation_page}{list}(doc, title = NULL, ...)
+\method{gcite_citation_page}{list}(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{default}(doc, title = NULL, sleeptime = 0, ...)
+\method{gcite_citation_page}{default}(doc, title = NULL, force = FALSE, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
 
 \item{title}{title of the article}
 
-\item{...}{not currently used}
+\item{force}{If passing a URL and there is a failure, should the
+program return \code{NULL}?}
 
-\item{sleeptime}{= time in seconds between http requests, to avoid Google Scholar rate limit}
+\item{...}{arguments passed to \code{\link{GET}}}
 }
 \value{
 A matrix of indices

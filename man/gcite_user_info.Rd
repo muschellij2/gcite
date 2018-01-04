@@ -5,7 +5,7 @@
 \title{Getting User Information of papers}
 \usage{
 gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
-  sleeptime = 0, ...)
+  force = FALSE, read_citations = TRUE, sleeptime = 0, ...)
 }
 \arguments{
 \item{user}{user ID for google Citations}
@@ -16,9 +16,15 @@ gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
 
 \item{secure}{use https vs. http}
 
-\item{sleeptime}{= time in seconds between http requests, to avoid Google Scholar rate limit}
+\item{force}{If passing a URL and there is a failure, should the
+program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
 
-\item{...}{Not used}
+\item{read_citations}{Should all citation pages be read?}
+
+\item{sleeptime}{time in seconds between http requests,
+to avoid Google Scholar rate limit}
+
+\item{...}{Additional arguments passed to \code{\link{GET}}}
 }
 \value{
 A list of citations, citation indices, and a

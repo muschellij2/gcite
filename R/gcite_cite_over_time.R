@@ -3,7 +3,7 @@
 #' Citation page
 #'
 #' @param doc A xml_document or the url for the main page
-#' @param ... not currently used
+#' @param ... arguments passed to \code{\link{GET}}
 #'
 #' @return A matrix of citations
 #' @export
@@ -29,7 +29,7 @@ gcite_cite_over_time <- function(doc, ...){
 #' @rdname gcite_cite_over_time
 #' @export
 gcite_cite_over_time.xml_node = function(doc, ...) {
-  gcite_cite_over_time.default(doc, ...)
+  gcite_cite_over_time.default(doc)
 }
 
 #' @rdname gcite_cite_over_time
@@ -38,16 +38,16 @@ gcite_cite_over_time.xml_document = function(doc, ...) {
   # doc = rvest::html_node(doc, css = "#gsc_g")
   doc = rvest::html_node(doc, css = ".gsc_md_hist_b")
   # doc = rvest::html_node(doc, css = ".gsc_md_hist_w")
-  gcite_cite_over_time(doc, ...)
+  gcite_cite_over_time(doc)
 }
 
 #' @rdname gcite_cite_over_time
 #' @export
 gcite_cite_over_time.character = function(doc, ...) {
-  res = httr::GET(url = doc)
+  res = httr::GET(url = doc, ...)
   stop_for_status(res)
   doc = httr::content(res)
-  gcite_cite_over_time(doc, ...)
+  gcite_cite_over_time(doc)
 }
 
 #' @rdname gcite_cite_over_time

@@ -4,14 +4,18 @@
 #' @param pagesize Size of pages, max 100, passed to \code{\link{gcite_url}}
 #' @param verbose Print diagnostic messages
 #' @param secure use https vs. http
-#' @param sleeptime = time in seconds between http requests, to avoid Google Scholar rate limit
-#'
-#' @param ... Not used
+#' @param force If passing a URL and there is a failure, should the
+#' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
+#' @param read_citations Should all citation pages be read?
+#' @param sleeptime time in seconds between http requests,
+#' to avoid Google Scholar rate limit
+#' @param ... Additional arguments passed to \code{\link{GET}}
 #'
 #' @return A list of citations, citation indices, and a
 #' \code{data.frame} of authors, journal, and citations, and a
 #' \code{data.frame} of the links to all paper URLs and the character
 #' string of the user name.
+#'
 #' @export
 #' @importFrom curry tail_curry
 #'
@@ -23,6 +27,8 @@ gcite_user_info = function(
   user, pagesize = 100,
   verbose = TRUE,
   secure = TRUE,
+  force = FALSE,
+  read_citations = TRUE,
   sleeptime = 0,
   ...) {
   url = paste0("http", ifelse(secure, "s", ""),
@@ -32,7 +38,7 @@ gcite_user_info = function(
   # Getting initial URL
   #############################################
   url = gcite_url(url, pagesize = pagesize, cstart = 0)
-  res = httr::GET(url = url)
+  res = httr::GET(url = url, ...)
   stop_for_status(res)
   doc = httr::content(res)
 
@@ -50,7 +56,7 @@ gcite_user_info = function(
   if (verbose) {
     message("Getting first set of papers")
   }
-  papers = gcite_papers(doc)
+  papers = gcite_papers(doc, ...)
 
   if (verbose) {
     message("Getting rest of papers")
@@ -62,32 +68,43 @@ gcite_user_info = function(
   all_papers = papers
   while (!is.null(papers)) {
     url = gcite_url(url, pagesize = pagesize, cstart = cstart)
-    papers = gcite_papers(url)
-    Sys.sleep(5)
+    papers = gcite_papers(url, ...)
     all_papers = rbind(all_papers, papers)
     cstart = pagesize + cstart
   }
 
-  if (verbose) {
-    message("Reading citation pages")
+  paper_df = NULL
+  if (read_citations) {
+    paper_df = gcite_paper_df(
+      urls = all_papers$title_link,
+      verbose = verbose,
+      force = force,
+      sleeptime = sleeptime,
+      ... = ...)
+    # if (verbose) {
+    #   message("Reading citation pages")
+    # }
+    # urls = all_papers$title_link
+    # paper_info = pbapply::pblapply(
+    #   urls,
+    #   gcite_citation_page,
+    #   force = force,
+    #   ... = ...)
+    # paper_df = data.table::rbindlist(paper_info, fill = TRUE)
+    # paper_df = as.data.frame(paper_df)
+    # cn = colnames(paper_df)
+    # suppressWarnings({
+    #   num_cn = as.numeric(cn)
+    # })
+    # cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
+    # paper_df = paper_df[, cn]
   }
-  urls = all_papers$title_link
-  paper_info = pbapply::pblapply(urls, tail_curry(gcite_citation_page,sleeptime))
-  paper_df = data.table::rbindlist(paper_info, fill = TRUE)
-  paper_df = as.data.frame(paper_df)
-  cn = colnames(paper_df)
-  suppressWarnings({
-    num_cn = as.numeric(cn)
-  })
-  cn = c(cn[is.na(num_cn)], sort(num_cn[ !is.na(num_cn)]))
-  paper_df = paper_df[, cn]
-
   # paper_df$title =
   L = list(citation_indices = cite_ind,
            overall_citations = overall_cite,
            all_papers = all_papers,
-           paper_df = paper_df,
            user = user
   )
+  L$paper_df = paper_df
   return(L)
 }
