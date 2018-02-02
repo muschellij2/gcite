@@ -39,7 +39,12 @@ Calls \code{\link{gcite_user_info}} after getting the user
 identifier
 }
 \examples{
+\dontrun{
 if (!is_travis()) {
 df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 }
+}
+if (!is_travis()) {
+df = gcite_author_info(author = "Jiawei Bai", secure = FALSE)
+} 
 }

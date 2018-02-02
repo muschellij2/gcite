@@ -19,10 +19,14 @@
 #' \code{data.frame} of the links to all paper URLs.
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
 #' if (!is_travis()) {
 #' df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 #' }
+#' }
+#' if (!is_travis()) {
+#' df = gcite_author_info(author = "Jiawei Bai", secure = FALSE)
+#' } 
 gcite_author_info = function(
   author, 
   ask = TRUE, 

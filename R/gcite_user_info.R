@@ -18,9 +18,10 @@
 #' 
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
 #' if (!is_travis()) {
-#' df = gcite_user_info(user = "T9eqZgMAAAAJ")
+#' df = gcite_user_info(user = "uERvKpYAAAAJ")
+#' }
 #' }
 gcite_user_info = function(
   user, pagesize = 100, 
