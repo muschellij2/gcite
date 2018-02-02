@@ -2,7 +2,7 @@ Package: gcite
 Type: Package
 Title: Google Citation Parser
 Version: 0.9.1
-Date: 2018-01-03
+Date: 2018-02-01
 Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Scrapes Google Citation pages and creates data frames of 

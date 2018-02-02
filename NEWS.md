@@ -1,3 +1,7 @@
+# gcite 0.9.1
+
+* Fixed errors with certain graphs on main page
+
 # gcite 0.8.1
 
 * New version to CRAN.
