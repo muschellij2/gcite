@@ -4,7 +4,8 @@
 \alias{gcite_username}
 \title{Google Citation Username Seracher}
 \usage{
-gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE, ...)
+gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE,
+  ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}

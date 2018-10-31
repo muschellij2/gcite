@@ -11,18 +11,20 @@
 \usage{
 gcite_citation_page(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL, force = FALSE,
+\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL,
+  force = FALSE, ...)
+
+\method{gcite_citation_page}{xml_document}(doc, title = NULL,
+  force = FALSE, ...)
+
+\method{gcite_citation_page}{character}(doc, title = NULL,
+  force = FALSE, ...)
+
+\method{gcite_citation_page}{list}(doc, title = NULL, force = FALSE,
   ...)
 
-\method{gcite_citation_page}{xml_document}(doc, title = NULL, force = FALSE,
+\method{gcite_citation_page}{default}(doc, title = NULL, force = FALSE,
   ...)
-
-\method{gcite_citation_page}{character}(doc, title = NULL, force = FALSE,
-  ...)
-
-\method{gcite_citation_page}{list}(doc, title = NULL, force = FALSE, ...)
-
-\method{gcite_citation_page}{default}(doc, title = NULL, force = FALSE, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}

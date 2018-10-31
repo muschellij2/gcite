@@ -95,6 +95,11 @@ gcite_citation_page.default = function(doc, title = NULL,
                   "pages", "publisher", "description",
                   "total citations")
   df$field = tolower(df$field)
+  is_patent = any(grepl("patent", df$field))
+  df$field[df$field %in% "inventors"] = "authors"
+  df$field[df$field %in% "patent office"] = "journal"
+  df$field[df$field %in% "patent number"] = "volume"
+  df$field[df$field %in% "application number"] = "issue"
   
   #############################
   # need different way to get total citations
@@ -113,10 +118,12 @@ gcite_citation_page.default = function(doc, title = NULL,
     df$id = 1
     wide = reshape(df, direction = "wide", idvar = "id", timevar = "field")
     colnames(wide) = gsub("^value[.]", "", colnames(wide))
+    wide$patent = is_patent
     wide$id = NULL
   } else {
     wide = t(rep(NA, length(keep_fields)))
     colnames(wide) = keep_fields
+    wide$patent = FALSE
     wide = data.frame(wide, stringsAsFactors = FALSE)
   }
   wide$title = title

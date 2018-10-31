@@ -1,8 +1,8 @@
 Package: gcite
 Type: Package
 Title: Google Citation Parser
-Version: 0.9.2
-Date: 2018-02-01
+Version: 0.9.3
+Date: 2018-10-31
 Author: John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Scrapes Google Citation pages and creates data frames of 
@@ -20,7 +20,7 @@ Imports:
     wordcloud,
     tm,
     graphics
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.0
 Encoding: UTF-8
 Suggests: 
     covr,
