@@ -1,6 +1,11 @@
+# gcite 0.9.3
+
+* Corrected author data if patents, not articles.
+* Changed examples to authors with fewer papers for speed of exaample.
+
 # gcite 0.9.1
 
-* Fixed errors with certain graphs on main page
+* Fixed errors with certain graphs on main page.
 
 # gcite 0.8.1
 

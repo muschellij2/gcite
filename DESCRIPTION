@@ -2,9 +2,12 @@ Package: gcite
 Type: Package
 Title: Google Citation Parser
 Version: 0.9.3
-Date: 2018-10-31
-Author: John Muschelli
-Maintainer: John Muschelli <muschellij2@gmail.com>
+Date: 2018-11-15
+Authors@R: c(person(given = "John",
+           family = "Muschelli",
+           email = "muschellij2@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-6469-1750")))
 Description: Scrapes Google Citation pages and creates data frames of 
     citations over time.
 License: GPL-3
