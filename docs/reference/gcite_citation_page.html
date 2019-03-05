@@ -158,20 +158,20 @@ program return <code>NULL</code>?</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (!<span class='fu'><a href='is_travis.html'>is_travis</a></span>()) {
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>httr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>httr</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rvest</span>)
 <span class='no'>url</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"https://scholar.google.com/citations?view_op=view_citation&amp;"</span>,
 <span class='st'>"hl=en&amp;oe=ASCII&amp;user=T9eqZgMAAAAJ&amp;pagesize=100&amp;"</span>,
 <span class='st'>"citation_for_view=T9eqZgMAAAAJ:W7OEmFMy1HYC"</span>)
 <span class='no'>url</span> <span class='kw'>=</span> <span class='fu'><a href='gcite_url.html'>gcite_url</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='no'>url</span>, <span class='kw'>pagesize</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>cstart</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='kw'>if</span> (!<span class='fu'><a href='is_travis.html'>is_travis</a></span>() <span class='kw'>&amp;</span> !<span class='fu'><a href='is_travis.html'>is_cran</a></span>()) {
 <span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_citation_page</span>(<span class='no'>url</span>)
 <span class='no'>doc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/httr/topics/content'>content</a></span>(<span class='kw pkg'>httr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/httr/topics/GET'>GET</a></span>(<span class='no'>url</span>))
 <span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_citation_page</span>(<span class='no'>doc</span>)
 <span class='no'>ind_nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rvest/topics/html_nodes'>html_nodes</a></span>(<span class='no'>doc</span>, <span class='st'>"#gsc_vcd_table div"</span>)
 <span class='no'>ind_nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/rvest/topics/html_nodes'>html_nodes</a></span>(<span class='no'>ind_nodes</span>, <span class='kw'>xpath</span> <span class='kw'>=</span> <span class='st'>'//div[@class = "gs_scl"]'</span>)
 <span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_citation_page</span>(<span class='no'>ind_nodes</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in gcite_citation_page.character(url): Service Unavailable (HTTP 503).</span></div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

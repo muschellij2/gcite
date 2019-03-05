@@ -143,17 +143,17 @@ Citation page</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (!<span class='fu'><a href='is_travis.html'>is_travis</a></span>()) {
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>httr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>httr</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rvest</span>)
 <span class='no'>url</span> <span class='kw'>=</span> <span class='st'>"https://scholar.google.com/citations?user=T9eqZgMAAAAJ"</span>
 <span class='no'>url</span> <span class='kw'>=</span> <span class='fu'><a href='gcite_url.html'>gcite_url</a></span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='no'>url</span>, <span class='kw'>pagesize</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>cstart</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-<span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_cite_over_time</span>(<span class='no'>url</span>)
+<span class='kw'>if</span> (!<span class='fu'><a href='is_travis.html'>is_travis</a></span>() <span class='kw'>&amp;</span> !<span class='fu'><a href='is_travis.html'>is_cran</a></span>()) {
+<span class='co'>#' ind = gcite_cite_over_time(url)</span>
 <span class='no'>doc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/httr/topics/content'>content</a></span>(<span class='kw pkg'>httr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/httr/topics/GET'>GET</a></span>(<span class='no'>url</span>))
 <span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_cite_over_time</span>(<span class='no'>doc</span>)
 <span class='no'>ind_nodes</span> <span class='kw'>=</span> <span class='kw pkg'>rvest</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/rvest/topics/html_nodes'>html_nodes</a></span>(<span class='no'>doc</span>, <span class='st'>".gsc_md_hist_b"</span>)
 <span class='no'>ind</span> <span class='kw'>=</span> <span class='fu'>gcite_cite_over_time</span>(<span class='no'>ind_nodes</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in gcite_cite_over_time.character(url): Service Unavailable (HTTP 503).</span></div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
