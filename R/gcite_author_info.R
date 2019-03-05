@@ -24,7 +24,7 @@
 #' df = gcite_author_info(author = "John Muschelli", secure = FALSE)
 #' }
 #' }
-#' if (!is_travis()) {
+#' if (!is_travis() & !is_cran()) {
 #' df = gcite_author_info(author = "Jiawei Bai", secure = FALSE)
 #' } 
 gcite_author_info = function(
