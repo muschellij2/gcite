@@ -32,7 +32,7 @@ gcite_username <- function(
   )
   
   res = httr::GET(url = url, ...)
-  stop_for_status(res)
+  httr::stop_for_status(res)
   doc = httr::content(res)
   
   

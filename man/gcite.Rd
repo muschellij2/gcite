@@ -38,3 +38,11 @@ or \code{\link{gcite_author_info}}
 Wraps getting the information from Google Citations and
 plotting the wordcloud
 }
+\examples{
+if (!is_travis()) {
+res = gcite(author = "John Muschelli")
+paper_df = res$paper_df
+gcite_wordcloud(paper_df)
+author_cloud(paper_df$authors)
+}
+}
