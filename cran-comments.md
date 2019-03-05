@@ -8,3 +8,6 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+
+--- 
+Some of these tests skip on CRAN as Google Scholar doesn't have an API, so you must scrape the website, which is OK with their TOS.  But this causes some rate limits, and so I need to skip them as the IP address from CRAN servers hitting it too much causes 503 errors.
