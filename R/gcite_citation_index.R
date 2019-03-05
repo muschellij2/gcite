@@ -9,12 +9,12 @@
 #' @export
 #' @importFrom rvest html_table html_nodes
 #' @examples
-#' if (!is_travis()) {
 #' library(httr)
 #' library(rvest) 
 #' library(gcite)
 #' url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
 #' url = gcite_url(url = url, pagesize = 10, cstart = 0) 
+#' if (!is_travis() & !is_cran()) {
 #' ind = gcite_citation_index(url)
 #' doc = content(httr::GET(url))
 #' ind = gcite_citation_index(doc)
