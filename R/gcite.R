@@ -20,7 +20,7 @@
 #' or \code{\link{gcite_author_info}}
 #' @export
 #' @examples 
-#' if (!is_travis()) {
+#' if (!is_travis() & !is_cran()) {
 #' res = gcite(author = "John Muschelli")
 #' paper_df = res$paper_df
 #' gcite_wordcloud(paper_df)

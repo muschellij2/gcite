@@ -2,9 +2,12 @@
 % Please edit documentation in R/is_travis.R
 \name{is_travis}
 \alias{is_travis}
+\alias{is_cran}
 \title{Check if on Travis CI}
 \usage{
 is_travis()
+
+is_cran()
 }
 \value{
 Logical if user is named travis
@@ -14,4 +17,5 @@ Simple check for Travis CI for examples
 }
 \examples{
 is_travis()
+is_cran()
 }

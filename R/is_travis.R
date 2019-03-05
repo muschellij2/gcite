@@ -6,8 +6,15 @@
 #'
 #' @examples
 #' is_travis()
+#' is_cran()
 is_travis = function(){
   users = Sys.getenv("USER")
   users = trimws(users)
   any(grepl("travis", users))
+}
+
+#' @export
+#' @rdname is_travis
+is_cran = function(){
+  !identical(Sys.getenv("NOT_CRAN"), "true")
 }

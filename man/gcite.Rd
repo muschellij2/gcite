@@ -39,7 +39,7 @@ Wraps getting the information from Google Citations and
 plotting the wordcloud
 }
 \examples{
-if (!is_travis()) {
+if (!is_travis() & !is_cran()) {
 res = gcite(author = "John Muschelli")
 paper_df = res$paper_df
 gcite_wordcloud(paper_df)
