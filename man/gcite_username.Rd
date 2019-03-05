@@ -2,7 +2,7 @@
 % Please edit documentation in R/gcite_username.R
 \name{gcite_username}
 \alias{gcite_username}
-\title{Google Citation Username Seracher}
+\title{Google Citation Username Searcher}
 \usage{
 gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE,
   ...)

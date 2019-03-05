@@ -1,5 +1,6 @@
 #' @title Google Citations URL
-#' @description Simple wrapper for adding in pagesize and start values for the page
+#' @description Simple wrapper for adding in \code{pagesize} 
+#' and start values for the page
 #'
 #' @param url URL of the google citations page
 #' @param cstart Starting value for the citation page

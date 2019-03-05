@@ -1,7 +1,11 @@
+# gcite 0.10.0
+
+* Fixing the `gcite_username` fails with new Google HTML.
+
 # gcite 0.9.3
 
 * Corrected author data if patents, not articles.
-* Changed examples to authors with fewer papers for speed of exaample.
+* Changed examples to authors with fewer papers for speed of example.
 
 # gcite 0.9.1
 

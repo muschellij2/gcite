@@ -1,5 +1,5 @@
 #' @name gcite_username
-#' @title Google Citation Username Seracher
+#' @title Google Citation Username Searcher
 #' @description Search Google Citation for an author username
 #' @param author author name separated by spaces
 #' @param verbose Verbose diagnostic printing

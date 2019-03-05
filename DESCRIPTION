@@ -27,4 +27,6 @@ RoxygenNote: 6.1.1
 Encoding: UTF-8
 Suggests: 
     covr,
-    testthat
+    testthat,
+    spelling
+Language: en-US

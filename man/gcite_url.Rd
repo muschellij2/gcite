@@ -27,7 +27,8 @@ gcite_user_url(user, secure = TRUE)
 A character string
 }
 \description{
-Simple wrapper for adding in pagesize and start values for the page
+Simple wrapper for adding in \code{pagesize} 
+and start values for the page
 }
 \examples{
 url = "https://scholar.google.com/citations?user=T9eqZgMAAAAJ"
