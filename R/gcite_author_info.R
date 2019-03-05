@@ -40,6 +40,9 @@ gcite_author_info = function(
   user = gcite_username(author = author, verbose = verbose, 
                         ask = ask, secure = secure,
                         ...)
+  if (is.null(user)) {
+    stop("No username found")
+  }
   res = gcite_user_info(
     user = user, 
     verbose = verbose, 
