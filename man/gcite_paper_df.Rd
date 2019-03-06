@@ -28,7 +28,7 @@ A \code{data.frame} of authors, journal, and citations
 Get Paper Data Frame from Title URLs
 }
 \examples{
-if (!is_travis()) {
+if (!is_travis() & !is_cran()) {
 L = gcite_user_info(user = "uERvKpYAAAAJ", 
 read_citations = FALSE)
 urls = L$all_papers$title_link

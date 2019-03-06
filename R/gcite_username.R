@@ -9,7 +9,7 @@
 #' 
 #' @return A character vector of the username of the author
 #' @examples
-#' if (!is_travis()) {
+#' if (!is_travis() & !is_cran()) {
 #' gcite_username("John Muschelli")
 #' }
 #' @export

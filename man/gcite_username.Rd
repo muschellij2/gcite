@@ -25,7 +25,7 @@ A character vector of the username of the author
 Search Google Citation for an author username
 }
 \examples{
-if (!is_travis()) {
+if (!is_travis() & !is_cran()) {
 gcite_username("John Muschelli")
 }
 }
