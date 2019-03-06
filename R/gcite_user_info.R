@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' if (!is_travis()) {
+#' if (!is_travis() & !is_cran()) {
 #' df = gcite_user_info(user = "uERvKpYAAAAJ")
 #' }
 #' }

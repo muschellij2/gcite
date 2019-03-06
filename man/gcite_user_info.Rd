@@ -37,7 +37,7 @@ Loops through pages for all information on Google Citations
 }
 \examples{
 \dontrun{
-if (!is_travis()) {
+if (!is_travis() & !is_cran()) {
 df = gcite_user_info(user = "uERvKpYAAAAJ")
 }
 }
