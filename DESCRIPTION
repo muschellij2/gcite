@@ -23,7 +23,7 @@ Imports:
     wordcloud,
     tm,
     graphics
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2.9000
 Encoding: UTF-8
 Suggests: 
     covr,

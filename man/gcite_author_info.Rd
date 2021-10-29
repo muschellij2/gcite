@@ -4,9 +4,17 @@
 \alias{gcite_author_info}
 \title{Getting User Information from name}
 \usage{
-gcite_author_info(author, ask = TRUE, pagesize = 100, verbose = TRUE,
-  secure = TRUE, force = FALSE, read_citations = TRUE,
-  sleeptime = 0, ...)
+gcite_author_info(
+  author,
+  ask = TRUE,
+  pagesize = 100,
+  verbose = TRUE,
+  secure = TRUE,
+  force = FALSE,
+  read_citations = TRUE,
+  sleeptime = 0,
+  ...
+)
 }
 \arguments{
 \item{author}{author name separated by spaces}

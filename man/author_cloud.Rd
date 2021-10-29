@@ -5,12 +5,23 @@
 \alias{author_frequency}
 \title{Make Wordcloud of authors from Papers}
 \usage{
-author_cloud(authors, addstopwords = gcite_stopwords(),
-  author_pattern = NULL, split = ",", verbose = TRUE,
-  colors = c("#66C2A4", "#41AE76", "#238B45", "#006D2C", "#00441B"), ...)
+author_cloud(
+  authors,
+  addstopwords = gcite_stopwords(),
+  author_pattern = NULL,
+  split = ",",
+  verbose = TRUE,
+  colors = c("#66C2A4", "#41AE76", "#238B45", "#006D2C", "#00441B"),
+  ...
+)
 
-author_frequency(authors, author_pattern = NULL, split = ",",
-  addstopwords = gcite_stopwords(), verbose = TRUE)
+author_frequency(
+  authors,
+  author_pattern = NULL,
+  split = ",",
+  addstopwords = gcite_stopwords(),
+  verbose = TRUE
+)
 }
 \arguments{
 \item{authors}{Vector of authors of papers}

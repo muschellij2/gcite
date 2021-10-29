@@ -4,8 +4,7 @@
 \alias{gcite_paper_df}
 \title{Get Paper Data Frame from Title URLs}
 \usage{
-gcite_paper_df(urls, verbose = TRUE, force = FALSE, sleeptime = 0,
-  ...)
+gcite_paper_df(urls, verbose = TRUE, force = FALSE, sleeptime = 0, ...)
 }
 \arguments{
 \item{urls}{A character vector of urls, from 

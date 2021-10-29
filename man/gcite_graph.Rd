@@ -29,3 +29,6 @@ A matrix of citations and years
 \description{
 Parses a google citation bar graph from html
 }
+\examples{
+>
+}

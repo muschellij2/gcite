@@ -4,8 +4,16 @@
 \alias{gcite_user_info}
 \title{Getting User Information of papers}
 \usage{
-gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
-  force = FALSE, read_citations = TRUE, sleeptime = 0, ...)
+gcite_user_info(
+  user,
+  pagesize = 100,
+  verbose = TRUE,
+  secure = TRUE,
+  force = FALSE,
+  read_citations = TRUE,
+  sleeptime = 0,
+  ...
+)
 }
 \arguments{
 \item{user}{user ID for google Citations}

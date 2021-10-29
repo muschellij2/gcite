@@ -4,8 +4,12 @@
 \alias{gcite_wordcloud}
 \title{Wordcloud of Google Citations Information}
 \usage{
-gcite_wordcloud(paper_df, author_args = list(), title_args = list(),
-  warn = FALSE)
+gcite_wordcloud(
+  paper_df,
+  author_args = list(),
+  title_args = list(),
+  warn = FALSE
+)
 }
 \arguments{
 \item{paper_df}{A \code{data.frame} with columns of authors and titles}

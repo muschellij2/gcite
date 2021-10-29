@@ -23,7 +23,7 @@
 #' ind = gcite_citation_page(url)
 #' doc = content(httr::GET(url))
 #' ind = gcite_citation_page(doc)
-#' ind_nodes = html_nodes(doc, "#gsc_vcd_table div")
+#' ind_nodes = html_nodes(doc, "#gsc_oci_table div")
 #' ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')  
 #' ind = gcite_citation_page(ind_nodes)
 #' }
@@ -44,11 +44,11 @@ gcite_citation_page.xml_nodeset = function(doc, title = NULL,
 gcite_citation_page.xml_document = function(doc, title = NULL,
                                             force = FALSE, ...) {
   if (is.null(title)) {
-    title = html_nodes(doc, "#gsc_vcd_title")
+    title = html_nodes(doc, "#gsc_oci_title")
     title = html_text(title)
   }
   # doc = html_nodes(doc, "#gsc_table div")
-  doc = html_nodes(doc, "#gsc_vcd_table div")
+  doc = html_nodes(doc, "#gsc_oci_table div")
   doc = html_nodes(doc, xpath = '//div[@class = "gs_scl"]')  
   gcite_citation_page(doc, title = title)
 }
@@ -83,11 +83,11 @@ gcite_citation_page.default = function(doc, title = NULL,
                                        force = FALSE, ...) {
   
   # fields = html_nodes(doc, xpath = '//div[@class = "gsc_field"]')
-  fields = html_nodes(doc, xpath = '//div[@class = "gsc_vcd_field"]')
+  fields = html_nodes(doc, xpath = '//div[@class = "gsc_oci_field"]')
   fields = html_text(fields)
   
   # vals = html_nodes(doc, xpath = '//div[@class = "gsc_value"]')
-  vals = html_nodes(doc, xpath = '//div[@class = "gsc_vcd_value"]')
+  vals = html_nodes(doc, xpath = '//div[@class = "gsc_oci_value"]')
   vals = html_text(vals)
   df = data.frame(field = fields, value = vals, stringsAsFactors = FALSE)
   keep_fields = c("authors", "publication date", 
@@ -128,7 +128,7 @@ gcite_citation_page.default = function(doc, title = NULL,
   }
   wide$title = title
   
-  citations = rvest::html_node(doc, css = "#gsc_vcd_graph_bars")
+  citations = rvest::html_node(doc, css = "#gsc_oci_graph_bars")
   citations = citations[!is.na(citations)]
   if ( length(citations) > 0) {
     citations = citations[[1]]

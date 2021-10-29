@@ -4,9 +4,17 @@
 \alias{gcite}
 \title{Google Citations Information}
 \usage{
-gcite(author, user, plot_wordcloud = TRUE, author_args = list(),
-  title_args = list(), warn = FALSE, force = FALSE, sleeptime = 0,
-  ...)
+gcite(
+  author,
+  user,
+  plot_wordcloud = TRUE,
+  author_args = list(),
+  title_args = list(),
+  warn = FALSE,
+  force = FALSE,
+  sleeptime = 0,
+  ...
+)
 }
 \arguments{
 \item{author}{author name separated by spaces}
