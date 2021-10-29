@@ -7,7 +7,7 @@
 #' @return A matrix of citations and years
 #' @export
 #' @importFrom xml2 as_list
-#' @examples >
+#' @examples
 gcite_graph <- function(citations, ...){
   UseMethod("gcite_graph")
 }
