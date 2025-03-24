@@ -3,7 +3,7 @@
 #' Citation page
 #'
 #' @param doc A xml_document or the url for the main page
-#' @param ... arguments passed to \code{\link{GET}}
+#' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return A matrix of citations
 #' @export

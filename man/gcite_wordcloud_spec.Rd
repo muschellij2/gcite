@@ -4,9 +4,16 @@
 \alias{gcite_wordcloud_spec}
 \title{gcite Wordcloud default}
 \usage{
-gcite_wordcloud_spec(words, freq, min.freq = 1, max.words = Inf,
-  random.order = FALSE, colors = c("#F768A1", "#DD3497", "#AE017E",
-  "#7A0177", "#49006A"), vfont = c("sans serif", "plain"), ...)
+gcite_wordcloud_spec(
+  words,
+  freq,
+  min.freq = 1,
+  max.words = Inf,
+  random.order = FALSE,
+  colors = c("#F768A1", "#DD3497", "#AE017E", "#7A0177", "#49006A"),
+  vfont = c("sans serif", "plain"),
+  ...
+)
 }
 \arguments{
 \item{words}{words to be plotted}
@@ -23,12 +30,12 @@ gcite_wordcloud_spec(words, freq, min.freq = 1, max.words = Inf,
 
 \item{vfont}{passed to text for the font}
 
-\item{...}{additional options passed to \code{\link{wordcloud}}}
+\item{...}{additional options passed to \code{\link[wordcloud]{wordcloud}}}
 }
 \value{
 Nothing
 }
 \description{
-Simple wrapper for \code{\link{wordcloud}} with 
+Simple wrapper for \code{\link[wordcloud]{wordcloud}} with 
 different defaults
 }

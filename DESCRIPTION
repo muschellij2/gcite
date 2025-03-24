@@ -1,8 +1,7 @@
 Package: gcite
 Type: Package
 Title: Google Citation Parser
-Version: 0.10.1
-Date: 2019-03-05
+Version: 0.11.0
 Authors@R: c(person(given = "John",
            family = "Muschelli",
            email = "muschellij2@gmail.com",
@@ -23,7 +22,7 @@ Imports:
     wordcloud,
     tm,
     graphics
-RoxygenNote: 6.1.1
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 Suggests: 
     covr,

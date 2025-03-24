@@ -11,20 +11,15 @@
 \usage{
 gcite_citation_page(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL,
-  force = FALSE, ...)
+\method{gcite_citation_page}{xml_nodeset}(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{xml_document}(doc, title = NULL,
-  force = FALSE, ...)
+\method{gcite_citation_page}{xml_document}(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{character}(doc, title = NULL,
-  force = FALSE, ...)
+\method{gcite_citation_page}{character}(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{list}(doc, title = NULL, force = FALSE,
-  ...)
+\method{gcite_citation_page}{list}(doc, title = NULL, force = FALSE, ...)
 
-\method{gcite_citation_page}{default}(doc, title = NULL, force = FALSE,
-  ...)
+\method{gcite_citation_page}{default}(doc, title = NULL, force = FALSE, ...)
 }
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
@@ -34,7 +29,7 @@ gcite_citation_page(doc, title = NULL, force = FALSE, ...)
 \item{force}{If passing a URL and there is a failure, should the 
 program return \code{NULL}?}
 
-\item{...}{arguments passed to \code{\link{GET}}}
+\item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 A matrix of indices

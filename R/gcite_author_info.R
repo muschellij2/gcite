@@ -12,7 +12,7 @@
 #' @param read_citations Should all citation pages be read?
 #' @param sleeptime time in seconds between http requests, 
 #' to avoid Google Scholar rate limit 
-#' @param ... Additional arguments passed to \code{\link{GET}}
+#' @param ... Additional arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return A list of citations, citation indices, and a 
 #' \code{data.frame} of authors, journal, and citations, and a 

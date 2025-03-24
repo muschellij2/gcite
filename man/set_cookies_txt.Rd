@@ -8,12 +8,12 @@ set_cookies_txt(file)
 }
 \arguments{
 \item{file}{tab-delimited text file of cookies, to be read in using
-\code{\link{readLines}}.  Comments should start the line with the pound
+\code{\link[base]{readLines}}.  Comments should start the line with the pound
 symbol}
 }
 \value{
 Either \code{NULL} if no domains contain the word \code{"scholar"},
-or an object of class \code{request} from \code{\link{set_cookies}}
+or an object of class \code{request} from \code{\link[httr]{set_cookies}}
 }
 \description{
 Set Cookies from Text file

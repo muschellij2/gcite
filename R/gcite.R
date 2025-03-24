@@ -14,7 +14,7 @@
 #' to avoid Google Scholar rate limit 
 #'  
 #' @param ... additional options passed to \code{\link{gcite_user_info}}
-#' and therefore \code{\link{GET}}
+#' and therefore \code{\link[httr]{GET}}
 #' 
 #' @return List from either \code{\link{gcite_user_info}}
 #' or \code{\link{gcite_author_info}}

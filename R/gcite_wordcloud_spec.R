@@ -1,6 +1,6 @@
 
 #' @title gcite Wordcloud default
-#' @description Simple wrapper for \code{\link{wordcloud}} with 
+#' @description Simple wrapper for \code{\link[wordcloud]{wordcloud}} with 
 #' different defaults
 #' 
 #' @param words words to be plotted
@@ -10,7 +10,7 @@
 #' @param random.order plot words in random order. If false, they will be plotted in decreasing frequency
 #' @param colors color words from least to most frequent
 #' @param vfont passed to text for the font
-#' @param ... additional options passed to \code{\link{wordcloud}}
+#' @param ... additional options passed to \code{\link[wordcloud]{wordcloud}}
 #' 
 #' @return Nothing
 #' @export

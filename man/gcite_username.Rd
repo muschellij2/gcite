@@ -4,8 +4,7 @@
 \alias{gcite_username}
 \title{Google Citation Username Searcher}
 \usage{
-gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE,
-  ...)
+gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE, ...)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -16,7 +15,7 @@ gcite_username(author, verbose = TRUE, ask = TRUE, secure = TRUE,
 
 \item{secure}{use https vs. http}
 
-\item{...}{arguments passed to \code{\link{GET}}}
+\item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 A character vector of the username of the author

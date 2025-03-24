@@ -4,8 +4,16 @@
 \alias{gcite_user_info}
 \title{Getting User Information of papers}
 \usage{
-gcite_user_info(user, pagesize = 100, verbose = TRUE, secure = TRUE,
-  force = FALSE, read_citations = TRUE, sleeptime = 0, ...)
+gcite_user_info(
+  user,
+  pagesize = 100,
+  verbose = TRUE,
+  secure = TRUE,
+  force = FALSE,
+  read_citations = TRUE,
+  sleeptime = 0,
+  ...
+)
 }
 \arguments{
 \item{user}{user ID for google Citations}
@@ -24,7 +32,7 @@ program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
 \item{sleeptime}{time in seconds between http requests, 
 to avoid Google Scholar rate limit}
 
-\item{...}{Additional arguments passed to \code{\link{GET}}}
+\item{...}{Additional arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 A list of citations, citation indices, and a 

@@ -7,7 +7,7 @@
 #' @param author_pattern regular expression for patterns to exclude from 
 #' individual authors 
 #' @param split split author names (default \code{","}), passed to
-#' \code{\link{strsplit}}
+#' \code{\link[base]{strsplit}}
 #' @param verbose Print diagnostic messages
 #' @param colors color words from least to most frequent.  Passed to 
 #' \code{\link{gcite_wordcloud_spec}}

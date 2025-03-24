@@ -5,7 +5,7 @@
 #' @param title title of the article 
 #' @param force If passing a URL and there is a failure, should the 
 #' program return \code{NULL}?
-#' @param ... arguments passed to \code{\link{GET}}
+#' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return A matrix of indices
 #' @export

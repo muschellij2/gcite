@@ -2,7 +2,7 @@
 #' @description Parses a google citation indices (h-index, etc.) from main page
 #'
 #' @param doc A xml_document or the url for the main page
-#' @param ... Additional arguments passed to \code{\link{GET}} if 
+#' @param ... Additional arguments passed to \code{\link[httr]{GET}} if 
 #' \code{doc} is a URL
 #'
 #' @return A matrix of indices

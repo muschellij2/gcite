@@ -4,9 +4,17 @@
 \alias{gcite}
 \title{Google Citations Information}
 \usage{
-gcite(author, user, plot_wordcloud = TRUE, author_args = list(),
-  title_args = list(), warn = FALSE, force = FALSE, sleeptime = 0,
-  ...)
+gcite(
+  author,
+  user,
+  plot_wordcloud = TRUE,
+  author_args = list(),
+  title_args = list(),
+  warn = FALSE,
+  force = FALSE,
+  sleeptime = 0,
+  ...
+)
 }
 \arguments{
 \item{author}{author name separated by spaces}
@@ -28,7 +36,7 @@ program return \code{NULL}, passed to \code{\link{gcite_citation_page}}}
 to avoid Google Scholar rate limit}
 
 \item{...}{additional options passed to \code{\link{gcite_user_info}}
-and therefore \code{\link{GET}}}
+and therefore \code{\link[httr]{GET}}}
 }
 \value{
 List from either \code{\link{gcite_user_info}}

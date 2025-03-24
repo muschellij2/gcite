@@ -18,7 +18,7 @@ gcite_main_graph(citations, ...)
 \arguments{
 \item{citations}{A list of nodes or xml_node}
 
-\item{...}{arguments passed to \code{\link{GET}}}
+\item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 A matrix of citations and years

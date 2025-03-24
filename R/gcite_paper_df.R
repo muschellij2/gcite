@@ -7,7 +7,7 @@
 #' program return \code{NULL}, passed to \code{\link{gcite_citation_page}}
 #' @param sleeptime time in seconds between http requests, 
 #' to avoid Google Scholar rate limit 
-#' @param ... Additional arguments passed to \code{\link{GET}}
+#' @param ... Additional arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return A \code{data.frame} of authors, journal, and citations
 #' @export

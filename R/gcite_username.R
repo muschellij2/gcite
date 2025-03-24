@@ -5,7 +5,7 @@
 #' @param verbose Verbose diagnostic printing
 #' @param ask If multiple authors are found, should a menu be given
 #' @param secure use https vs. http
-#' @param ... arguments passed to \code{\link{GET}}
+#' @param ... arguments passed to \code{\link[httr]{GET}}
 #' 
 #' @return A character vector of the username of the author
 #' @examples

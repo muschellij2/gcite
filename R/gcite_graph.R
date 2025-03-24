@@ -2,7 +2,7 @@
 #' @description Parses a google citation bar graph from html
 #'
 #' @param citations A list of nodes or xml_node
-#' @param ... arguments passed to \code{\link{GET}}
+#' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return A matrix of citations and years
 #' @export

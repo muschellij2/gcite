@@ -18,7 +18,7 @@ gcite_citation_index(doc, ...)
 \arguments{
 \item{doc}{A xml_document or the url for the main page}
 
-\item{...}{Additional arguments passed to \code{\link{GET}} if 
+\item{...}{Additional arguments passed to \code{\link[httr]{GET}} if 
 \code{doc} is a URL}
 }
 \value{

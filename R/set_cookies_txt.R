@@ -2,12 +2,12 @@
 #' Set Cookies from Text file
 #'
 #' @param file tab-delimited text file of cookies, to be read in using
-#' \code{\link{readLines}}.  Comments should start the line with the pound
+#' \code{\link[base]{readLines}}.  Comments should start the line with the pound
 #' symbol
 #' @note 
 #' This function searches for domains that contain the word \code{"scholar"}
 #' @return Either \code{NULL} if no domains contain the word \code{"scholar"},
-#' or an object of class \code{request} from \code{\link{set_cookies}}
+#' or an object of class \code{request} from \code{\link[httr]{set_cookies}}
 #' @importFrom httr set_cookies
 # #' @export
 set_cookies_txt = function(file) {
