@@ -89,10 +89,11 @@ gcite_username <- function(
   dat$fullnames <- paste(dat$names, dat$insts, sep = ": ")
   dat$fullnames[ is.na(dat$insts)] <- dat$names[ is.na(dat$insts)]
   
+  
   if (nrow(dat) > 1) {
     ### if they have someone for a hit
     ##grab the first hit
-    if (ask) {
+    if (ask || !interactive()) {
       choice <- menu(dat$fullnames,
                      title = "More than One Author, Please Choose")
       if (choice == 0) {

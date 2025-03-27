@@ -7,6 +7,7 @@
 #' @return A matrix of citations and years
 #' @export
 #' @importFrom xml2 as_list
+#' @examples
 gcite_graph <- function(citations, ...){
   UseMethod("gcite_graph")
 }
@@ -22,7 +23,7 @@ gcite_graph.xml_node = function(citations, ...) {
 #' @export
 gcite_graph.xml_document = function(citations, ...) {
   # citations = rvest::html_node(citations, css = "#gsc_graph_bars")
-  citations = rvest::html_node(citations, css = "#gsc_vcd_graph_bars")
+  citations = rvest::html_node(citations, css = "#gsc_oci_graph_bars")
   gcite_graph(citations)
 }
 

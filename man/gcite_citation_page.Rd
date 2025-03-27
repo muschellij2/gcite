@@ -48,7 +48,7 @@ if (!is_travis() & !is_cran()) {
 ind = gcite_citation_page(url)
 doc = content(httr::GET(url))
 ind = gcite_citation_page(doc)
-ind_nodes = html_nodes(doc, "#gsc_vcd_table div")
+ind_nodes = html_nodes(doc, "#gsc_oci_table div")
 ind_nodes = html_nodes(ind_nodes, xpath = '//div[@class = "gs_scl"]')  
 ind = gcite_citation_page(ind_nodes)
 }
