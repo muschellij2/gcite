@@ -9,3 +9,4 @@
 ^appveyor\.yml$
 R/gcite_main_graph_old\.R
 ^cran-comments\.md$
+^\.github$

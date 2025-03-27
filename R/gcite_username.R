@@ -16,11 +16,11 @@
 #' @importFrom rvest html_attr html_text
 #' @importFrom utils menu
 gcite_username <- function(
-  author,
-  verbose = TRUE,
-  ask = TRUE,
-  secure = TRUE,
-  ...) {
+    author,
+    verbose = TRUE,
+    ask = TRUE,
+    secure = TRUE,
+    ...) {
   auth.names <- strsplit(author, " ")[[1]]
   auth.names <- paste(auth.names[1:length(auth.names)],
                       sep = "", collapse = "+")
@@ -93,7 +93,7 @@ gcite_username <- function(
   if (nrow(dat) > 1) {
     ### if they have someone for a hit
     ##grab the first hit
-    if (ask || !interactive()) {
+    if (ask && interactive()) {
       choice <- menu(dat$fullnames,
                      title = "More than One Author, Please Choose")
       if (choice == 0) {
@@ -101,7 +101,11 @@ gcite_username <- function(
         return(NULL)        
       }
     } else {
-      warning("Multiple authors found, first chosen")
+      msg = "Multiple authors found, first chosen"
+      if (ask) {
+        msg = paste0("Not interactive session. ", msg)
+      }
+      warning(msg)
       print(dat)
       choice = 1
     }
