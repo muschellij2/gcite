@@ -1,3 +1,8 @@
+# gcite 0.11.0
+
+* Fixing the `gcite_username` fails with new Google HTML (again).
+* Fixing the \link issues with packages.
+
 # gcite 0.10.0
 
 * Fixing the `gcite_username` fails with new Google HTML.
