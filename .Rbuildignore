@@ -11,3 +11,4 @@ R/gcite_main_graph_old\.R
 ^cran-comments\.md$
 ^\.github$
 ^\.DS_Store$
+^CRAN-SUBMISSION$
