@@ -5,4 +5,4 @@
 * This is a new release.
 
 ---
-Fixing the \link issues with packages and bug fixes.
+Fixing the \link issues with packages and removed LazyData and bug fixes.
